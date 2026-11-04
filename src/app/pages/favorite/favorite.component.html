@@ -1,0 +1,60 @@
+<div class="fav-container">
+  <!-- <p>my-orders works!</p> -->
+  <div class="headers">
+    <h2 class="fw-bolder m-2">My Wishlist</h2>
+    <h4 class="pra-col m-2">
+      Mange your Wishlist for fast and easy checkout across our marketplaces
+    </h4>
+  </div>
+  @if (favProducts.length==0) {
+  <div
+    class="empty w-100 d-flex justify-content-center align-items-center flex-column"
+  >
+    <img class="" src="/assets/favorite.png" alt="" />
+    <h3 class="fw-bold">
+      Ready to make a wish?
+    </h3>
+    <h3 class="fw-bold">
+      Start adding items you love to your Wishlist by tapping on the heart icon    </h3>
+    <button routerLink="/products" class="btn btn-success pry-bg my-3">Continue Shopping</button>
+  </div>
+  }@else if(favProducts.length>0) {
+    @for (item of favProducts; track $index) {
+      @if (item.isFavorite) {
+        <div class="row align-items-center main-sec m-0 my-4">
+          <div class="left col-md-3">
+            <img class="" src="/assets/gym-guy.png" alt="" />
+          </div>
+          <div class="right col-md-9 px-3  d-flex flex-column justify-content-around  my-4">
+            <div class="top w-100 d-flex justify-content-between">
+              <h4 class="fw-bolder">{{item.name}}</h4>
+              <div class="top-right d-flex align-items-center">
+                <button (click)="addToCard(item)" class="btn btn-success mx-3">Add To Card</button>
+                <i (click)="removeItemFromFav(item)" class="fa-regular fa-trash-can mx-2 sec-color fs-4 pointer"></i>
+              </div>
+            </div>
+
+            <div class="rate my-4">
+              <span>{{item.overAllRating}}</span> <i class="fa-solid fa-star mt-1 mx-2 fs-6"></i
+              ><span>(114)</span>
+            </div>
+
+            <p>
+            {{item.description}}
+            </p>
+            <div class="bottom d-flex justify-content-between">
+              <div class="bottom-left">
+                <i class="fa-solid fa-basket-shopping fs-4 me-2"></i>
+                <span>only <span class="sec-color">{{item.quantity}}</span>  left in Stock</span>
+              </div>
+              <h3><span class="sec-color fw-bolder">{{item.price}} </span> EGP </h3>
+
+            </div>
+          </div>
+        </div>
+
+      }
+    }
+
+  }
+</div>

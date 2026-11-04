@@ -1,0 +1,48 @@
+<div class="cover">
+  <div class="plan w-100">
+    <div class="steps w-50 my-3">
+      <mat-progress-bar mode="determinate" value="10"></mat-progress-bar>
+    </div>
+    <h3 class="pry-color fw-bold">{{ "Step 1/7" | translate }}</h3>
+    <div class="title text-center my-5 px-4">
+      <h2 class="pra-col">
+        {{ "Unleash Your Potential with a Personalized" | translate }}
+      </h2>
+      <h2 class="pra-col">{{ "Plan in 7 Steps" | translate }}</h2>
+    </div>
+    <div class="question mb-4">
+      <h1>{{ "What is your Gender?" | translate }}</h1>
+    </div>
+    <div class="answer row justify-content-evenly">
+      <div class="left col-md-5 position-relative start-0">
+        <img class="w-100" src="/assets/female.png" alt="" />
+        <input
+          name="gender"
+          id="gender"
+          class="position-absolute check"
+          value="20"
+          [(ngModel)]="gender"
+          type="radio"
+        />
+      </div>
+      <div class="right col-md-5 position-relative">
+        <img class="w-100" src="/assets/male.png" alt="" />
+        <input
+          name="gender"
+          id="gender"
+          class="position-absolute check"
+          value="10"
+          [(ngModel)]="gender"
+          type="radio"
+        />
+      </div>
+    </div>
+    <button
+      [disabled]="!gender"
+      class="btn btn-success w-75 my-5 rounded-3 fw-bold pry-bg border-0"
+      (click)="openStep2()"
+    >
+      {{ "Next" | translate }}
+    </button>
+  </div>
+</div>

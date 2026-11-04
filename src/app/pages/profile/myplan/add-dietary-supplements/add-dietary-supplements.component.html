@@ -1,0 +1,60 @@
+<div class="container p-3">
+  <img class="w-100 mb-2" src="/assets/addfood.png" alt="" />
+  <div class="w-100 d-flex justify-content-between">
+    <h4 *ngIf="mealTypeId == 1">{{'Breakfast'|translate}}</h4>
+    <h4 *ngIf="mealTypeId == 2">{{'Lunch'|translate}}</h4>
+    <h4 *ngIf="mealTypeId == 3">{{'Dinner'|translate}}</h4>
+  </div>
+  <div class="w-100 d-flex justify-content-between align-items-center my-3">
+    <h6 class="text-danger">{{'After'|translate}}</h6>
+  </div>
+  @for (item of recommendedProducts; track $index) { @if (item.mealTiming==20) {
+  <div class="w-100 food-container my-3">
+    <div class="food d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <input
+          class="w-auto mx-2"
+          type="checkbox"
+          [value]="itemsSelected[$index]"
+          data-toggle="toggle"
+          (change)="isSelected(item, $index)"
+          name=""
+          id=""
+        />
+        <img src="/assets/scrambled.png" alt="sasasa" />
+        <div class="">
+          <h4>{{ item.productName }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  } }
+  <div class="w-100 d-flex justify-content-between align-items-center my-3">
+    <h6 class="text-success">{{'Before'|translate}}</h6>
+  </div>
+  @for (item of recommendedProducts; track $index) { @if (item.mealTiming==10) {
+
+  <div class="w-100 food-container my-3">
+    <div class="food d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <input
+          class="w-auto mx-2"
+          type="checkbox"
+          [value]="itemsSelected[$index]"
+          data-toggle="toggle"
+          (change)="isSelected(item, $index)"
+          name=""
+          id=""
+        />
+        <img src="/assets/scrambled.png" alt="sasasa" />
+        <div class="">
+          <h4>{{ item.productName }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  } }
+  <button (click)="addChosenProducts()" class="btn btn-success w-100">
+    {{'Add'|translate}}
+  </button>
+</div>

@@ -1,0 +1,16 @@
+<div class="row justify-content-center">
+  @if (!_SharedService.loading) {
+
+    @for (item of nutritionData; track $index) {
+
+      <div class="col-md-3 my-4 mx-5 pointer" [routerLink]="'/tips/details/'+item.id">
+        <img class="w-100 rounded-2 mb-3 imges" [src]="_TipsService.baseUrl+'TipsDrGreenMedia/'+item.url" alt="all tips" appDefaultImage="/assets/default-img.png">
+        <h4 class="text-center">{{item.title}}</h4>
+
+      </div>
+    }
+  }@else {
+    <app-loader></app-loader>
+  }
+
+  </div>

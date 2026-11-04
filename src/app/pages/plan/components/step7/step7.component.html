@@ -1,0 +1,65 @@
+<div *ngIf="!_PlanService.calculateCalories" class="cover">
+  <div class="plan p-5 w-100">
+    <div class="steps w-50 my-3">
+      <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+    </div>
+    <h3 class="pry-color fw-bold">{{ "Step 7/7" | translate }}</h3>
+
+    <div class="question mb-4">
+      <h4 class="fw-light">
+        <span class="sec-color"> Thank </span
+        >{{ "You for trusting us" | translate }}
+      </h4>
+    </div>
+    <div class="answer text-center">
+      <h3 class="mb-3">
+        {{ "Your Nutrition plan is being prepared" | translate }}
+      </h3>
+    </div>
+
+    <div
+      class="status d-flex flex-column align-items-center justify-content-center w-100 text-center"
+    >
+      <img src="/assets/svgs/loading.png" alt="Loading" />
+      <button
+        routerLink="/products"
+        (click)="activeModal.dismiss()"
+        class="btn btn-success w-75 my-5 rounded-3 fw-bold pry-bg border-0"
+      >
+        {{ "Explore our products " | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="_PlanService.calculateCalories" class="cover">
+  <div class="plan p-5 w-100">
+    <div class="steps w-50 my-3">
+      <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+    </div>
+    <h3 class="pry-color fw-bold">Step 7/7</h3>
+
+    <div class="question mb-4">
+      <h4 class="fw-light">
+        <span class="sec-color"> Thank </span>You for trusting us
+      </h4>
+    </div>
+    <div class="answer text-center">
+      <h3 class="mb-3">Your daily net calorie goal is :</h3>
+      <p class="h1 fw-bolder">{{ data }}</p>
+      <p class="h3 fw-bolder pry-color my-3">Calories</p>
+    </div>
+
+    <div
+      class="status d-flex flex-column align-items-center justify-content-center w-100 text-center"
+    >
+
+
+      <button
+        (click)="activeModal.dismiss()"
+        class="btn btn-success w-75 my-5 rounded-3 fw-bold pry-bg border-0"
+      >
+        Let's Start
+      </button>
+    </div>
+  </div>
+</div>

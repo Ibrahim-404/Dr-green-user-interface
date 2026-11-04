@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <p>
+    <span routerLink="/tips" class="">{{ "Tips" | translate }}</span> >
+    {{ "Tips Details" | translate }}
+  </p>
+  <div class="container">
+    @if (!_SharedService.loading) {
+
+
+    <h1 class="title w-50 text-center m-auto fw-bold my-3">
+      {{ tipData.title }}
+    </h1>
+    <h4 class="pra-col text-center px-4 my-2">{{ tipData.description }}</h4>
+    <div
+      class="person my-3 d-flex align-items-center justify-content-center m-auto"
+    >
+      <img src="/assets/test/1.png" alt="" class="pic mx-2" />
+      <div class="person-title">
+        <h4 class="fw-bolder">{{ tipData.author }}</h4>
+        <h4 class="pry-color fw-bolder">
+          Last Update : {{ tipData.datePublished }}
+        </h4>
+      </div>
+
+    </div>
+    <div class="rounded-2 my-4 d-flex flex-column align-items-center">
+      <img
+        [src]="basePath + 'TipsDrGreenMedia/' + tipData.url"
+        alt=""
+        class="mx-2 main-pic"
+        appDefaultImage="/assets/default-img.png"
+      />
+      <h5 class="pra-col my-2">{{ tipData.content }}</h5>
+    </div>
+  }@else{
+    <app-loader></app-loader>
+  }
+  </div>
+  <div class="w-100 d-flex justify-content-center my-3">
+    <h1 class="sec-title p-2">{{ "More about Workouts" | translate }}</h1>
+  </div>
+  <div class="row justify-content-center">
+    @for (item of allTips; track $index) {
+      @if (!_SharedService.loading) {
+
+        <div class="col-md-3 my-4 mx-5 pointer">
+          <img
+          [routerLink]="'/tips/details/' + item.id"
+        class="w-100 rounded-2 mb-3 imges"
+        [src]="basePath + 'TipsDrGreenMedia/' + item.url"
+        appDefaultImage="/assets/default-img.png"
+        />
+        <h4 class="text-center">{{ item.title }}</h4>
+      </div>
+    }@else{
+      <app-loader></app-loader>
+    }
+    }
+  </div>
+</div>

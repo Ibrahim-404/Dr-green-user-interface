@@ -1,0 +1,31 @@
+<div class="container">
+    @for (item of addressData; track $index) {
+
+
+
+        <div [ngClass]="item.isDefault ? 'default item my-3 p-2' : 'not-default'" class="d-flex justify-content-between item my-3 p-2">
+          <div class="left">
+            <div class="d-flex align-items-center ">
+              <h4 class="pe-3" >Home</h4>
+              <button *ngIf="item.isDefault" class="mx-3" class="btn btn-success">
+                Default
+              </button>
+            </div>
+            <h4><span class="pra-col my-2">Name : </span> {{item.fName}} {{item.lName}}</h4>
+            <h4><span class="pra-col my-2">Address : </span> {{item.addressLocation}}</h4>
+            <h4><span class="pra-col my-2">Phone : </span> {{item.phoneNumber}}</h4>
+          </div>
+          <div class="right">
+            <i class="fa-regular fa-pen-to-square fs-3 sec-color" (click)="editAddress(item)"></i>
+          </div>
+        </div>
+      }
+
+    <div class="bottom w-100 d-flex justify-content-between">
+      <a class="sec-color pointer" (click)="addNewAddress()">Add New Address</a>
+      <div class="">
+        <button class="btn btn-outline-success mx-3">Cancel</button>
+        <button class="btn btn-success">Confirm</button>
+      </div>
+    </div>
+</div>

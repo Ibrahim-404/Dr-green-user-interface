@@ -1,0 +1,86 @@
+<div class="container p-3">
+  <img class="w-100 mb-2" src="/assets/addfood.png" alt="" />
+  <div class="w-100 d-flex justify-content-between">
+    <h4>{{ recommendedMeals[0].mealTypeName }}</h4>
+
+    <h6 class="fw-bold"><span class="sec-color">{{calSubmission}} </span>{{'Cal'|translate}}</h6>
+  </div>
+  <div class="w-100 d-flex justify-content-between align-items-center my-3">
+    <h6 class="pra-col">
+      {{'Advised to'|translate}} {{ recommendedMeals[0].recommendedCalories }} {{'Cal'|translate}}
+    </h6>
+    <button *ngIf="recommendedMeals[0].recommendedCalories>calSubmission" class="btn btn-outline-success rounded-4">{{'Light amount'|translate}}</button>
+  </div>
+  @for (item of recommendedMeals[0].planMealFoods; track $index) {
+  <div class="w-100 food-container my-3">
+    <div class="food d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <!-- <input class="w-auto mx-2" type="checkbox" name="" id="" /> -->
+        <input
+          type="checkbox"
+          style="width: 24px;height: 24px;"
+          [value]="itemsSelected[$index]"
+          (change)="isSelected(item, $index)"
+          data-toggle="toggle"
+        />
+        <img class="mx-2" src="/assets/scrambled.png" alt="sasasa" />
+        <div class="">
+          <h4>{{ item.foodName }}</h4>
+          <span class="pry-col"
+            >{{ item.ingredientGrams }}{{'gm'|translate}} - {{ item.calories }} {{'cal'|translate}}</span
+          >
+        </div>
+      </div>
+      <div class="rounded-4 d-flex align-items-center">
+        <input
+        *ngIf="itemsSelected[$index]"
+        style="width: 70px;"
+          placeholder="100 gm"
+          type="text"
+          appOnlyNumbers
+          name=""
+          id=""
+          min="0"
+          class="form-control mx-2"
+          [(ngModel)]="calInputs[$index]"
+          (change)="getTotalCal(item, $index)"
+        />
+        <span>{{ gramsToCal[$index] || 0 }} {{'cal'|translate}}</span>
+      </div>
+    </div>
+  </div>
+  }
+  <div class="w-100">
+    <h4>{{'Your custom food'|translate}}</h4>
+    @for (item of _MyplanService.customFood; track $index) {
+    <div class="w-100 food-container my-3">
+      <div class="food d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+
+          <img class="mx-2" src="/assets/scrambled.png" alt="sasasa" />
+          <div class="">
+            <h4>{{ item.name }}</h4>
+            <span class="pry-col"
+              >{{ item.quantityInGrams }}{{'gm'|translate}} - {{ item.calories }} {{'cal'|translate}}</span
+            >
+          </div>
+        </div>
+        <div class="rounded-4 d-flex">
+       </div>
+      </div>
+  </div>
+
+}
+  <div (click)="openAddMeal()" class="add-food w-100 rounded p-2 pointer MY-3">
+    <i class="fa-solid text-white fa-plus bg-success rounded-5 p-2 mx-2"></i>
+    <span>{{'Add food'|translate}}</span>
+  </div>
+  <div *ngIf="err" class="alert alert-danger">{{ err }}</div>
+  <button
+    [disabled]="!btnValidation()"
+    (click)="addChosenFood()"
+    class="btn btn-success w-100 my-3"
+  >
+    {{'Add'|translate}}
+  </button>
+</div>

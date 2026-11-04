@@ -1,0 +1,128 @@
+<div class="orders-container">
+  <!-- <p>my-orders works!</p> -->
+  <div class="headers">
+    <h2 class="fw-bolder m-2">{{ "My Orders" | translate }}</h2>
+    <h4 class="pra-col m-2">
+      {{
+        "Mange your Orders for fast and easy checkout across our marketplaces"
+          | translate
+      }}
+    </h4>
+  </div>
+  @if (allOrders.length==0) {
+  <div
+    class="empty w-100 d-flex justify-content-center align-items-center flex-column"
+  >
+    <img class="" src="/assets/cafe.png" alt="" />
+    <h3>
+      {{
+        "We have thousands of items available across our wide range of products. Start ordering today!"
+          | translate
+      }}
+    </h3>
+    <button class="btn btn-success pry-bg my-3">
+      {{ "Continue Shopping" | translate }}
+    </button>
+  </div>
+  } @if(allOrders.length>0){
+  <div class="row my-3">
+    <h1 class="fw-bolder m-2">{{ "Current Order" | translate }}</h1>
+    @for (item of allOrders; track $index) {
+    <div
+      *ngIf="item.status==10||item.status==20"
+      class="col-md-12 d-flex justify-content-between w-100 curr-order p-3 rounded-3"
+    >
+      <div class="col-md-8 left d-flex justify-content-around">
+        <img
+          class=""
+
+          [src]="basePath + 'ProductImages/' + item.orderItems[0].productImages[0]"
+          appDefaultImage="/assets/default-img.png"
+          alt="order image"
+        />
+        <div class="left-content">
+          <h4>{{ item.number }}</h4>
+
+          <span class="sec-color my-4"
+            ><i class="fa-solid fa-truck-moving sec-color"></i>
+            {{
+              "Delivery within 24 hours in Cairo, Giza & Alexandria , as for the of the governorates within 72 hours"
+                | translate
+            }}
+          </span>
+          <h6 class="my-4">
+            {{ "Quantity :" | translate }} {{ item.orderItemsQuantity }}
+          </h6>
+        </div>
+      </div>
+      <div
+        class="col-md-2 right text-end d-flex flex-column align-items-end p-3 justify-content-between"
+      >
+        <h5 *ngIf="item.status == 10" class="bg-warning rounded-1 shipping">
+          {{ "Processing" | translate }}
+        </h5>
+        <h5 *ngIf="item.status == 20" class="Shipping rounded-1 shipping">
+          {{ "Shipping" | translate }}
+        </h5>
+
+
+        <h3>
+          <span class="sec-color fw-bolder">{{ item.totalPrice }} </span> EGP
+        </h3>
+      </div>
+    </div>
+
+    }
+  </div>
+  <div class="row my-3">
+    <h1 class="fw-bolder m-2">{{ "Other orders" | translate }}</h1>
+    @for (item of allOrders; track $index) {
+    <div
+      *ngIf="item.status!=10&&item.status!=20"
+      class="col-md-12 d-flex justify-content-between w-100 curr-order p-3 rounded-3"
+    >
+      <div class="col-md-5 left d-flex justify-content-around">
+        <img
+          class=""
+          style="max-width:15px !important;"
+          src="/assets/gym-guy.png"
+          appDefaultImage="/assets/default-img.png"
+          alt="order image"
+        />
+        <div class="left-content">
+          <h4>{{ item.number }}</h4>
+          <!-- <div class="rate my-4">
+            <span>{{ item.overAllRating }}</span>
+            <i class="fa-solid fa-star mt-1 mx-2"></i><span>(114)</span>
+          </div> -->
+          <span class="sec-color my-4"
+            ><i class="fa-solid fa-truck-moving sec-color"></i>
+            {{
+              "Delivery within 24 hours in Cairo, Giza & Alexandria , as for the of the governorates within 72 hours"
+                | translate
+            }}
+          </span>
+          <h6 class="my-4">
+            {{ "Quantity :" | translate }} {{ item.orderItemsQuantity }}
+          </h6>
+        </div>
+      </div>
+      <div
+        class="col-md-2 right text-end d-flex flex-column align-items-end p-3 justify-content-between"
+      >
+
+        <h5 *ngIf="item.status == 30" class="Delivered rounded-1 shipping">
+          {{ "Delivered" | translate }}
+        </h5>
+        <h5 *ngIf="item.status == 40" class="Canceled rounded-1 shipping">
+          {{ "Canceled" | translate }}
+        </h5>
+        <h3>
+          <span class="sec-color fw-bolder">{{ item.totalPrice }} </span> EGP
+        </h3>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

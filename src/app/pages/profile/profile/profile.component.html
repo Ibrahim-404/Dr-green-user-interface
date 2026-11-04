@@ -1,0 +1,63 @@
+<div class="back"></div>
+<div class="w-100">
+  <div class="profile-container bg-white">
+    <div class="headers">
+      <h2 class="fw-bolder m-2">Profile</h2>
+      <h6 class="pra-col m-2">
+        {{'Mange your details, view your tier status and change your password'|translate}}
+      </h6>
+    </div>
+  </div>
+  <!-- Track Customer Daily Plan starts -->
+  <div class="profile-img bg-white h-25 position-relative rounded-3">
+    <div class="content rounded-3 m-0">
+      <div class="desc">
+        <h2>{{'Track Customer Daily Plan'|translate}}</h2>
+        <p>
+          {{'Mange your plan , view your Statistics, Recommended meals , Training video and and Dietary supplements'|translate}}
+        </p>
+      </div>
+      <div class="details-btn">
+        @if(havePlan){
+        <button routerLink="/profile/myplan" class="btn btn-dark">
+          {{'See Details >'|translate}}
+        </button>
+
+        }@else {
+
+        <button (click)="openPlan()" class="btn btn-dark">
+          {{'Request plan now >'|translate}}
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="profile-container bg-white">
+    <div class="headers">
+      <h2 class="fw-bolder m-2">{{'Personal Info'|translate}}</h2>
+      <div class="row my-2">
+        <div class="form-group col">
+          <label for="name">{{'Full Name'|translate}}</label>
+          <input [value]="userInfo.name" disabled class="form-control" type="text" name="name" id="name" />
+        </div>
+        <div class="form-group col">
+          <label for="email">{{'Email'|translate}}</label>
+          <input [value]="userInfo.email" disabled class="form-control" type="text" name="email" id="email" />
+        </div>
+        <div class="form-group col">
+          <label for="phone">{{'Phone number'|translate}}</label>
+          <input [value]="userInfo.phoneNumber" disabled class="form-control" type="text" name="phone" id="phone" />
+        </div>
+      </div>
+      <div class="d-flex justify-content-end w-100 my-4">
+        <button
+          (click)="openChangePassword()"
+          class="btn btn-outline-success mx-2"
+        >
+          {{'Change Password'|translate}}
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

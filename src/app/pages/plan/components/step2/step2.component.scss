@@ -1,0 +1,34 @@
+@use "../../../../../helpers/mixin.scss" as *;
+@use "../../../../../helpers/variables.scss" as *;
+@use "@angular/material" as mat;
+
+.cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .plan {
+    background-color: aliceblue;
+    @include radius(15px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    .answer {
+      .left,
+      .right {
+        input {
+          bottom: calc(0px - 25px);
+          left: calc(50% - 25px);
+          width: fit-content !important;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 575px) {
+  .text-content {
+    width: 50% !important;
+  }
+}

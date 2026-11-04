@@ -1,0 +1,70 @@
+<div class="p-0 m-0 cover">
+  <div class="item-container container position-relative py-5">
+    <img class="pattern" src="assets/flower.png" alt="pattern" />
+    <div class="logo my-5">
+      <img src="/assets/logo.png" alt="logo" />
+    </div>
+    <div class="log-form text-center m-auto d-flex flex-column align-items-center w-75">
+      <h3 class="mb-3 fw-bold">Verification code sent check</h3>
+      <label for="">Phone Number or Email Address</label>
+      <form (ngSubmit)="vertifyCode()" [formGroup]="formData">
+        <div class="form-group row justify-content-around">
+          <input
+            placeholder="-"
+            maxlength="1"
+            type="text"
+            class="form-control col-md-2"
+            formControlName="form1"
+            (keyup)="moveFocus($event, 1)"
+          />
+          <input
+            placeholder="-"
+            maxlength="1"
+            type="text"
+            class="form-control col-md-2"
+            formControlName="form2"
+            (keyup)="moveFocus($event, 2)"
+          />
+          <input
+            placeholder="-"
+            maxlength="1"
+            type="text"
+            class="form-control col-md-2"
+            formControlName="form3"
+            (keyup)="moveFocus($event, 3)"
+          />
+          <input
+            placeholder="-"
+            maxlength="1"
+            type="text"
+            class="form-control col-md-2"
+            formControlName="form4"
+            (keyup)="moveFocus($event, 4)"
+          />
+        </div>
+        <a class="text-secondary pointer" (click)="resendCode()">Resend Code?</a>
+        <div *ngIf="invalidCode()" class="alert alert-danger">
+          Invalid code
+        </div>
+        <div *ngIf="resendStatus()" class="alert alert-success">
+          Code resend successfully
+        </div>
+        <div class="btn-status my-5 w-100 d-flex justify-content-center">
+          <button
+            (click)="openForget()"
+            class="btn back btn-outline-success px-5 py-2 mx-3"
+          >
+            Back
+          </button>
+          <button
+            [disabled]="formData.invalid"
+            type="submit"
+            class="btn next btn-success px-5 py-2 mx-3"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

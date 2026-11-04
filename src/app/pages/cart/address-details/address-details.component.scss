@@ -1,0 +1,21 @@
+.container{
+  min-width: 90% !important;
+  padding: 50px 20px;
+  // min-height: 60vh !important;
+  .item{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+}
+
+}
+.default{
+  border: solid 1px rgb(182, 97, 111);
+}
+.not-default{
+
+  border: solid 1px rgba(107, 107, 107, 0.547);
+}

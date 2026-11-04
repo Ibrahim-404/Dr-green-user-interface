@@ -1,0 +1,6 @@
+<div class="ruler my-3">
+  <div *ngFor="let unit of units" class="ruler-unit">
+    <div class="ruler-mark" [class.long-mark]="unit % 10 === 0" [class.medium-mark]="unit % 5 === 0 && unit % 10 !== 0"></div>
+    <div class="ruler-number" *ngIf="unit % 10 === 0">{{ unit }}</div>
+  </div>
+</div>

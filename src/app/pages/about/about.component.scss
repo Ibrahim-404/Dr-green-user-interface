@@ -1,0 +1,109 @@
+@use "../../../helpers/variables.scss" as *;
+@use "../../../helpers/mixin.scss" as *;
+.pattern1 {
+  width: 170px;
+  z-index: -5;
+
+}
+.fs {
+  font-size: 20px;
+  font-weight: 500;
+}
+.title {
+  border-bottom: solid 1px $main-color;
+  width: fit-content;
+}
+.left {
+  ul {
+    padding: 10px;
+    line-height: 40px;
+
+    li {
+      margin-bottom: 10px;
+      font-weight: 500;
+      font-size: 20px;
+    }
+  }
+}
+.right::after {
+  content: "";
+  @include dimension(197px, 125px);
+  background-color: hwb(39 31% 7% / 0.5);
+  position: absolute;
+  z-index: -9;
+  top: -30px;
+  right: -25px;
+  @include radius(10px);
+}
+.vision {
+  background-color: #edfcf2;
+  p {
+    line-height: 40px;
+  }
+}
+.value {
+  background-color: #edfcf2;
+  .card {
+    .card-img-top {
+      max-width: 524px !important;
+      max-height: 291px !important;
+      object-fit: contain;
+    }
+  }
+  ::ng-deep .carousel-control-next {
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: solid 2px $main-color;
+    position: absolute;
+    top: -50px;
+
+    bottom: 95%;
+    right: 0%;
+    @include dimension(45px, 45px);
+
+    padding: 0px;
+    @include radius(50%);
+    opacity: 1;
+    background-color: white;
+    ::ng-deep .carousel-control-next-icon {
+      background-size: 20px !important;
+      background-image: url("/assets/next-green.svg") !important;
+    }
+  }
+  ::ng-deep .carousel-control-prev {
+    position: absolute;
+    @include dimension(4%, 10%);
+
+    left: 90%;
+    top: -50px;
+
+    opacity: 1;
+
+    ::ng-deep .carousel-control-prev-icon {
+      background-image: url("/assets/prev-green.svg") !important;
+
+      background-color: white;
+      border-radius: 50%;
+      border: solid 2px $main-color;
+      background-size: 20px;
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      @include dimension(44px, 44px);
+      @include radius(50%);
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .fs {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  ::ng-deep .carousel-control-prev {
+    margin: 0px -30px;
+  }
+  .right img {
+    width: 90%;
+  }
+}

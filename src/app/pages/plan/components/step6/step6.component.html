@@ -1,0 +1,46 @@
+<div class="cover ">
+  <div class="plan p-3 w-100">
+    <div class="steps w-50 my-3">
+      <mat-progress-bar
+        mode="determinate"
+        value="85"
+
+      ></mat-progress-bar>
+    </div>
+    <h3 class="pry-color fw-bold">{{'Step 6/7'|translate}}</h3>
+
+    <div class="question mb-4">
+      <h1>{{'What do you want to Achieve?'|translate}}</h1>
+    </div>
+    <div class="answer row justify-content-evenly">
+
+     <div class=" col-md-7 item-container rounded-4 position-relative my-2 p-0">
+      <input data-group="group1" value="10" #first (change)="onItemChange($event)" [checked]="first.value === selectedValue"  class="position-absolute  rounded-4 input w-100" type="checkbox">
+
+
+      <img class="w-100 rounded-4" src="/assets/2.png" alt="">
+      <div class="position-absolute item rounded-4 text-light px-2 py-1">
+        <h4 class="w-25 mt-2"> {{'Lean and Toned'| translate}}</h4>
+      </div>
+     </div>
+
+     <div class=" col-md-7 item-container rounded-4 position-relative my-2 p-0">
+      <input data-group="group1" value="20" #second (change)="onItemChange($event)" [checked]="second.value === selectedValue"  class="position-absolute  rounded-4 input w-100" type="checkbox">
+
+      <img class="w-100 rounded-4" src="/assets/1.png" alt="">
+      <div class="position-absolute item rounded-4 text-light px-2 py-1">
+        <h4 class="w-25 mt-2">{{'Muscular'| translate}}</h4>
+      </div>
+     </div>
+    </div>
+    <div class="status d-flex justify-content-around w-100">
+      <button (click)="openStep5()" class="btn btn-success back-btn w-75 my-5 rounded-3 me-2 fw-bold ">
+        {{'Back'|translate}}
+      </button>
+      <button [disabled]="!selectedValue" (click)="openStep7()" class="btn btn-success w-75 my-5 rounded-3 fw-bold pry-bg border-0">
+        {{'Let’s Start'|translate}}
+      </button>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="pry-bg py-3 position-relative">
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-4">
+        <img class="my-4" src="assets/logo.png " alt="" />
+        <p class="">
+          <span class="fw-bold"
+            ><span class="sec-color"> {{'D'|translate}}</span>{{'octor'|translate}}
+            <span class="sec-color">{{'G'|translate}}</span>{{'reen'|translate}}</span
+          >
+          {{'is a leading company dedicated to empowering individuals on their weight loss journey. Committed to promoting holistic well-being, the company offers a range of personalized programs and services designed to address diverse health and fitness needs.'|translate}}
+        </p>
+      </div>
+      <div class="col-md-2 my-5">
+        <h5 class="fw-bold">{{'Our Categories'|translate}}</h5>
+        <ul class="list-unstyled">
+          @for (item of parentsCategories; track $index) {
+
+
+            <li class="mb-4 mt-5">{{item.name}}</li>
+
+          }
+        </ul>
+      </div>
+      <div class="col-md-4 my-5">
+        <h5 class="fw-bold">{{'GET IN TOUCH'|translate}}</h5>
+        <div class="icons text-white my-4">
+          <i
+            class="fa-brands mb-2 fs-2 py-2 mx-2 px-2 rounded bg-white-muted fa-facebook-f"
+          ></i>
+          <i
+            class="fa-brands mb-2 fs-2 py-2 px-2 mx-2 rounded bg-white-muted fa-tiktok"
+          ></i>
+          <i
+            class="fa-brands mb-2 fs-2 py-2 px-2 mx-2 rounded bg-white-muted fa-instagram"
+          ></i>
+          <i
+            class="fa-brands mb-2 fs-2 py-2 px-2 mx-2 rounded bg-white-muted fa-twitter"
+          ></i>
+          <i
+            class="fa-brands mb-2 fs-2 py-2 px-2 mx-2 rounded bg-white-muted fa-linkedin-in"
+          ></i>
+        </div>
+        <div class="contact">
+          <ul class="list-unstyled">
+            <li class="mb-4 mt-5">
+              <img src="/assets/svgs/location.svg" class="text-white mx-2" />{{'45 El Nozha st, Cairo, Egypt'|translate}}
+            </li>
+            <li class="mb-4 mt-5">
+              <i class="fa-regular fa-envelope text-white mx-2"></i
+              >Support&#64;Dr.green.com
+            </li>
+            <li class="mb-4 mt-5">
+              <i class="fa-solid fa-phone text-white mx-2"></i>01552666657
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-whatsapp class="position-absolute whatsapp"></app-whatsapp>
+</div>

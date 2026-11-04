@@ -1,0 +1,87 @@
+<div class="p-0 m-0 cover ">
+
+  <div class="item-container container position-relative">
+    <img class="pattern" src="assets/flower.png" alt="pattern">
+    <i (click)="activeModal.close('Close click')" class="fa-solid fa-xmark position-absolute"></i>
+    <div class="logo my-3">
+      <img src="/assets/logo.png" alt="logo">
+    </div>
+    <div class="log-form  w-75">
+      <div class="sign-up d-flex justify-content-between align-items-center">
+        <h3 class="mb-3 fw-bold">Sign Up</h3>
+        <span>Already have an account?<a (click)="open()">Sign In</a></span>
+          </div>
+      <form (ngSubmit)="register(registerForm)" [formGroup]="registerForm">
+        <div class="all w-100">
+          <div class="form-group ">
+            <label for="name">Name</label>
+            <input id="name" formControlName="name" placeholder="Ahmed" type="text" class="form-control">
+            <div *ngIf="registerForm.get('name')?.errors &&registerForm.get('name')?.dirty" class="">
+              <div *ngIf="registerForm.get('name')?.errors?.['required']" class="alert alert-danger">Invalid name</div>
+
+            </div>
+          </div>
+          <div class=" row justify-content-between">
+            <div class="form-group col-md-5">
+              <label for="email">Email</label>
+              <input id="email" formControlName="email" placeholder="hello@gmail.com|" type="text" class="form-control">
+              <div *ngIf="registerForm.get('email')?.errors &&registerForm.get('email')?.touched" class="">
+                <div *ngIf="registerForm.get('email')?.errors?.['required']" class="alert alert-danger">Invalid email</div>
+
+              </div>
+
+            </div>
+            <div class="form-group col-md-5">
+              <label for="phoneNumber">Phone Number  </label>
+              <input id="phoneNumber" formControlName="phoneNumber" placeholder="01554666675" type="text" class="form-control">
+              <div *ngIf="registerForm.get('phoneNumber')?.errors &&registerForm.get('phoneNumber')?.touched" class="">
+                <div *ngIf="registerForm.get('phoneNumber')?.errors?.['required']" class="alert alert-danger">Invalid phone number</div>
+
+              </div>
+            </div>
+          </div>
+          <div class=" row justify-content-between">
+            <div class="form-group col-md-5">
+              <label for="password">Password</label>
+              <input id="password" formControlName="password" placeholder="**************" type="password" class="form-control">
+              <div *ngIf="registerForm.get('password')?.errors &&registerForm.get('password')?.touched" class="">
+                <div *ngIf="registerForm.get('password')?.errors?.['required']" class="alert alert-danger">Invalid password</div>
+
+              </div>
+            </div>
+            <div class="form-group col-md-5">
+              <label for="confirmPassword">Confirm Password  </label>
+              <input id="confirmPassword" formControlName="confirmPassword" placeholder="*************" type="password" class="form-control">
+              <div *ngIf="registerForm.get('name')?.errors &&registerForm.get('name')?.dirty" class="">
+                <div  *ngIf="registerForm.hasError('notMatching')" class="alert alert-danger"> Password and confirm password doesn't match</div>
+
+              </div>
+            </div>
+          </div>
+          <div class="sign-btn d-flex justify-content-center my-4">
+            <button [disabled]="registerForm.invalid" type="submit" class="btn  btn-success pry-bg border-0 px-5">Sign Up</button>
+
+          </div>
+        </div>
+    </form>
+    </div>
+    <div class="w-75 position-relative ">
+      <p class="or text-center m-0">OR</p>
+    </div>
+    <div class="social-log my-3">
+      <div class="item face d-flex">
+        <i class="fa-brands fa-facebook text-primary mx-2"></i>
+        <h6 class="m-0">Continue with Facebook</h6>
+      </div>
+      <div class="item face d-flex">
+        <i class="fa-brands fa-google mx-2"></i>
+        <h6 class="m-0">Continue with Google</h6>
+      </div>
+      <div class="item face d-flex">
+        <i class="fa-brands fa-square-x-twitter mx-2"></i>
+        <h6 class="m-0">Continue with Twitter</h6>
+      </div>
+
+    </div>
+  </div>
+</div>

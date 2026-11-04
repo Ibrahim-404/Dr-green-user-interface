@@ -1,0 +1,190 @@
+
+.cover{
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: -99999;
+}
+
+.my-plan-container{
+  width: 90%;
+  margin: auto;
+  .profile-img{
+    background-image: url(/assets/profile.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    width: 90%;
+    margin: 0px auto;
+    // min-height: 30vh;
+    // height: fit-content;
+    .content{
+      width: 100%;
+      height: 100% ;
+      padding: 20px;
+      // min-height: 30vh;
+      padding-bottom: 5px;
+      color: aliceblue;
+      background-image:linear-gradient(90deg, #FC6212 42.28%, rgba(234, 88, 12, 0) 100%);
+
+
+      .desc{
+        width: 50%;
+
+
+      }
+      .details-btn{
+      display: flex;
+      justify-content: end;
+      }
+
+    }
+    .caro{
+      .day{
+        width: 40px !important;
+      }
+
+    }
+  }
+  .recomended-meals{
+    .meals{
+      border-top: solid .5px #D9D9D9;
+      .meal{
+
+        img{
+          width: 40px;
+        }
+        border-bottom: solid .5px #D9D9D9;
+      }
+    }
+    .add-food{
+      background-color: #F5FAFD;
+
+    }
+  }
+  .recommended-dietary{
+    .title{
+      border-bottom: solid .5px #D9D9D9;
+    }
+    .meal{
+      img{
+        width: 40px;
+      }
+    }
+    .add-food{
+      background-color: #F5FAFD;
+    }
+  }
+  .comment-sec{
+    .comment{
+
+      border-top: solid 1px  #80808080;
+      .comment-header{
+        h4{
+          span{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+}
+        }
+      }
+    }
+  }
+  .right{
+    .weight-today,.fitness-today{
+      box-shadow: 0px 4px 16px 0px #0000001A;
+      background-color:#EDFCF2;
+
+      ;
+      img{
+        width: 100px;
+        object-fit: contain;
+      }
+    }
+    .breakfast{
+      .item{
+        box-shadow: 0px 4px 22px 0px #9F9F9F26;
+        span{
+          color: #F97316;
+        }
+        i{
+          background-color:  #EBECEE;
+          text-align: center;
+          padding-top: 17px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+}
+      }
+    }
+    .plan{
+      .form-select{
+        color: #F97316;
+        font-weight: 700 !important;
+        background-color: beige !important;
+        border: none;
+      }
+      span{
+        border-left: solid .5px #D9D9D9;
+      }
+    }
+  }
+}
+.calender{
+  box-shadow: 0px 4px 16px 0px #0000001A;
+
+}
+.border-bottom{
+  border-bottom: solid 1px #D9D9D9;
+}
+
+.sleeping{
+  background-color: #8676FE;
+}
+.calories{
+  background-color: #FF7443;
+
+}
+.water{
+  background-color:#1AB0B0;
+
+}
+.workout{
+  background-color:#F55F80;
+
+}
+
+
+::ng-deep .custom-modal-size .modal-dialog{
+  min-width: 80% !important;
+  min-height: 80vh !important;
+  width: fit-content !important;
+  height: fit-content !important;
+}
+
+
+.date{
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+
+}
+.btn{
+  background-color: #0ADB94 ;
+}
+.btn-selected{
+  background-color: black !important;
+  color: white;
+}

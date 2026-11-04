@@ -1,0 +1,458 @@
+<div class="cover bg-light"></div>
+
+<div class="my-plan-container">
+  <div class="profile-img bg-white h-25 my-3 position-relative rounded-3 w-100">
+    <div class="content rounded-3 m-0">
+      <div class="desc">
+        <h2>{{ "Track Customer Daily Plan" | translate }}</h2>
+        <p>
+          {{
+            "Mange your plan , view your Statistics, Recommended meals , Training video and and Dietary supplements"
+              | translate
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="calender rounded-3 d-flex justify-content-between align-items-center my-3 bg-white py-3 w-100"
+  >
+    <div class="date mx-3">
+      <p-calendar
+        [(ngModel)]="date"
+        view="month"
+        dateFormat="mm/yy"
+        placeholder="select a date"
+        (onSelect)="onMonthListChange()"
+        />
+        <!-- (onSelect)="onMonthChange()" -->
+    </div>
+    <div class="caro w-75">
+      <owl-carousel-o
+        [options]="customOptions"
+        class="d-flex align-items-center"
+      >
+        <ng-container *ngFor="let slide of monthDays; let i = index">
+          <ng-template carouselSlide>
+            <button
+              [disabled]="!slide.selected"
+              [ngClass]="selectedDate == slide.date ? 'btn-selected' : 'btn'"
+              class="p-2 day rounded-3 position-relative mx-2"
+            >
+              <span>{{ slide.weekday | slice : 0 : 2 }}</span>
+              {{ slide.date | slice : 8 : 10 }}
+              <input
+                class="position-absolute date opacity-0 pointer"
+                [id]="slide.date"
+                [value]="slide.date"
+                (change)="onDateChange($event)"
+                name="date"
+                type="radio"
+              />
+            </button>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+  <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+
+  <div class="w-100 row my-4">
+    <div class="left col-md-8 px-0 row">
+      <!-- the four pointers sec starts  -->
+      <div class="row w-100 justify-content-between">
+        <div class="calories col rounded text-white me-3 py-2 px-1">
+          <div class="header">
+            <i class="fa-solid mx-2 fa-fire"></i
+            ><span>{{ "Calories" | translate }}</span>
+          </div>
+          <div class="result">
+            <div class="img w-100 d-flex justify-content-center mt-3">
+
+              <img class="m-auto" src="/assets/indicator.png" alt="">
+            </div>
+            <span
+              >{{ recommendationsAndGoals.dailyTargetCalories }} /
+              {{ recommendationsAndGoals.planTargetCalories }} KCL</span
+            >
+          </div>
+        </div>
+
+        <div class="water calories col rounded text-white me-3 py-2 px-1">
+          <div class="header">
+            <i class="fa-solid mx-2 fa-droplet"></i>
+            <span>{{ "Water" | translate }}</span>
+            <!-- <div class="img w-100 d-flex justify-content-center mt-3">
+
+              <img style="width: 115px ;height: 67px;" class="m-auto" src="/assets/waveWater.png" alt="">
+            </div> -->
+          </div>
+          @for (planRecommendations of
+          recommendationsAndGoals.planRecommendations; track $index) { @if
+          (planRecommendations.goalType ==2) { @for (userPlanGoalLogs of
+          recommendationsAndGoals.userPlanGoalLogs; track $index) { @if
+          (planRecommendations.id == userPlanGoalLogs.planRecommendationId) {
+
+          <div class="result w-100 text-center my-2 d-flex flex-column align-items-center justify-content-center">
+            <div class="progress-bar ">
+              <progress [value]="userPlanGoalLogs.actualValue" min="0" [max]="planRecommendations.recommendedValue" style="visibility:hidden;height:0;width:0;"></progress>
+            </div>
+            <span
+              >{{ userPlanGoalLogs.actualValue }} /
+              {{ planRecommendations.recommendedValue }} L</span
+            >
+          </div>
+          <div class="d-flex align-items-center justify-content-center w-100">
+            <div class="d-flex align-items-center">
+              <button
+                (click)="increaseQuantity(userPlanGoalLogs)"
+                class="mx-1 rounded-5 btn bg-white fw-bolder"
+              >
+                +
+              </button>
+              <span>1 L</span>
+              <button
+                (click)="decreaseQuantity(userPlanGoalLogs)"
+                [disabled]="+userPlanGoalLogs.actualValue == 0"
+                class="mx-1 rounded-5 btn bg-white text-black fw-bolder px-3"
+              >
+                -
+              </button>
+            </div>
+          </div>
+          } } } }
+        </div>
+        <div class="workout calories col rounded text-white me-3 py-2 px-1">
+          <div class="header">
+
+              <!-- <ngb-progressbar class="" [max]="planRecommendations.recommendedValue" type="info" [value]="+userPlanGoalLogs.actualValue" /> -->
+
+            <i class="fa-solid fa-dumbbell mx-2"></i>
+            <span>{{ "Workout" | translate }}</span>
+
+          </div>
+          @for (planRecommendations of
+          recommendationsAndGoals.planRecommendations; track $index) { @if
+          (planRecommendations.goalType ==1) { @for (userPlanGoalLogs of
+          recommendationsAndGoals.userPlanGoalLogs; track $index) { @if
+          (planRecommendations.id == userPlanGoalLogs.planRecommendationId) {
+          <div class="result ms-3">
+            <span
+              >{{ userPlanGoalLogs.actualValue }} /
+              {{ planRecommendations.recommendedValue }} workout</span
+            >
+          </div>
+
+          } } } }
+        </div>
+        <div class="sleeping col rounded text-white me-3 py-2 px-1">
+          <div class="header">
+            <i class="fa-solid fa-bed mx-2"></i>
+            <span>{{ "sleeping" | translate }}</span>
+          </div>
+          <div class="img w-100 d-flex justify-content-center mt-3">
+
+            <img class="m-auto" src="/assets/Vector.png" alt="">
+          </div>
+          @for (planRecommendations of
+          recommendationsAndGoals.planRecommendations; track $index) { @if
+          (planRecommendations.goalType ==3) { @for (userPlanGoalLogs of
+          recommendationsAndGoals.userPlanGoalLogs; track $index) { @if
+          (planRecommendations.id == userPlanGoalLogs.planRecommendationId) {
+          <div class="result w-100 text-center my-2">
+            <span
+              >{{ userPlanGoalLogs.actualValue }} /
+              {{ planRecommendations.recommendedValue }} H</span
+            >
+          </div>
+          <div class="w-100 d-flex justify-content-center ">
+
+            <button
+              (click)="increaseQuantity(userPlanGoalLogs)"
+              class="mx-1 rounded-5 btn bg-white fw-bolder"
+            >
+              +
+            </button>
+            <span>1 H</span>
+            <button
+              (click)="decreaseQuantity(userPlanGoalLogs)"
+              [disabled]="+userPlanGoalLogs.actualValue == 0"
+              class="mx-1 rounded-5 btn bg-white text-black fw-bolder px-3"
+            >
+              -
+            </button>
+          </div>
+
+          } } } }
+        </div>
+      </div>
+      <!-- the four pointers sec ends  -->
+
+      <h3 class="my-3 fw-bold">{{'Recommended Meals'|translate}}</h3>
+      <!-- recommended meals starts  -->
+      <div class="recomended-meals w-100 row px-0 mx-0 justify-content-between">
+        <div class="col">
+          <app-meal [recommendedMeals]="recommendedMeals" [id]="1"></app-meal>
+        </div>
+        <div class="col">
+          <app-meal [recommendedMeals]="recommendedMeals" [id]="2"></app-meal>
+        </div>
+        <div class="col">
+          <app-meal [recommendedMeals]="recommendedMeals" [id]="3"></app-meal>
+        </div>
+      </div>
+      <!-- the recommended meals ends  -->
+      <!-- Recommended Dietary supplements  -->
+      <h3 class="fw-bold m-3 w-100">{{'Recommended Dietary supplements'|translate}}</h3>
+      <div
+        class="recommended-dietary w-100 row px-0 mx-0 justify-content-between rounded-3 my-3"
+      >
+
+
+        <div class="col bg-white mx-3">
+          <app-supplements  [userPlanProducts]="userPlanProducts" [mealTypeId]='1'></app-supplements>
+        </div>
+        <div class="col bg-white mx-3">
+          <app-supplements [userPlanProducts]="userPlanProducts" [mealTypeId]="2"></app-supplements>
+        </div>
+        <div class="col bg-white mx-3">
+          <app-supplements [userPlanProducts]="userPlanProducts" [mealTypeId]="3"></app-supplements>
+        </div>`
+
+      </div>
+      <!-- comment section starts  -->
+      <div class="comment-sec my-2 w-100 p-3">
+        <div class="bg-white p-2">
+          <h3 class="fw-bold my-3">{{'Comments'|translate}}</h3>
+          @for (comments of commentsAndReplays; track $index) {
+          <div class="comment py-3 w-100 my-4">
+            <div
+              *ngIf="comments.comment"
+              class="comment-header w-100 d-flex justify-content-between"
+            >
+              <h4>
+                <span class="bg-secondary p-2 mb-0">{{
+                  comments.userName.toLocaleUpperCase() | slice : 0 : 1
+                }}</span>
+                {{ comments.userName }}
+              </h4>
+              <div class="date mx-3 pra-col">
+                {{ comments.commentDate | date }}
+              </div>
+            </div>
+            <p class="ms-5 mt-3">
+              {{ comments.comment }}
+            </p>
+            <div class="replies">
+              @for (replies of comments.replies; track $index) {
+              <div class="comment py-3 px-5 my-4">
+                <div
+                  class="comment-header w-100 d-flex justify-content-between"
+                >
+                  <h4>
+                    <span class="bg-primary p-2 mb-0">{{
+                      replies.userName.toUpperCase() | slice : 0 : 1
+                    }}</span>
+                    {{ replies.userName }}
+                  </h4>
+                  <div class="date mx-3 pra-col">
+                    {{ replies.replyDate | date }}
+                  </div>
+                </div>
+                <p class="ms-5 mt-3">
+                  {{ replies.reply }}
+                </p>
+              </div>
+              }
+            </div>
+          </div>
+          }
+
+          <div class="add-comment d-flex p-2 my-4 mx-4 rounded-2">
+            <input
+              type="text"
+              [(ngModel)]="comment"
+              placeholder="{{'Add a comment'|translate}}"
+              class="form-control"
+            />
+            <i
+              (click)="addComment()"
+              class="fa-solid pointer fs-3 text-center mx-4 pry-bg p-2 text-white rounded-5 fa-paper-plane"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--The right side  -->
+    <div class="right col-md-4 row">
+      <div class="profile w-100 mb-3">
+        <div
+          class="user d-flex justify-content-between align-items-center px-1 bg-white rounded-3 my-3"
+        >
+          <div class="d-flex align-items-center">
+            <img style="width: 100px" src="assets/gym-guy.png" alt="" />
+            <div class="info">
+              <h4 class="m-0">{{ selectedPlanList.name }}</h4>
+              <p class="m-0">
+                {{ userBodyDetails?.gender == 10 ? "Male" : "Female" }},
+                {{ userBodyDetails?.height }} {{'cm'|translate}}, {{ userBodyDetails?.age }}{{'yrs'|translate}}”
+              </p>
+            </div>
+          </div>
+          <div class="plan d-flex px-2 align-items-center">
+            <select
+              (change)="changeList($event)"
+              class="form-select w-auto mx-2"
+              aria-label="Default select example"
+            >
+              @for (item of userPlanList; track $index) {
+              <option [value]="item.id">{{ item.name }}</option>
+              }
+            </select>
+            <span class="pra-col ps-2"
+              >{{
+                selectedPlanList.durationInDays
+                  ? selectedPlanList.durationInDays
+                  : 0
+              }}
+              {{'Days'|translate}}
+            </span>
+          </div>
+        </div>
+        <div
+          class="weight-today d-flex justify-content-between align-items-center my-3 p-2 rounded-3"
+        >
+          <div
+            (click)="openAddWeight()"
+            class="d-flex justify-content-start align-items-center"
+          >
+            <img style="width: 30px" src="assets/svgs/weight.png" alt="" />
+            <h5 class="fw-bold pointer mx-2 mb-0">{{'Add your weight today'|translate}}</h5>
+          </div>
+          <h2 class="fw-bolder mb-2">
+            {{ userWeightHistory[userWeightHistory.length - 1]?.weight }} {{'KG'|translate}}
+          </h2>
+          <!-- <h2 class="fw-bolder mb-2">
+            {{ selectedPlanDetails.lastCustomerWeight }} {{'KG'|translate}}
+          </h2> -->
+        </div>
+        <div class="fitness-today bg-white my-3 p-3 rounded-3">
+          <div
+            class="d-flex border-bottom justify-content-between align-items-center p-3"
+          >
+            <div class="d-flex justify-content-start align-items-center">
+              <i class="fa-solid pra-col mx-2 fa-fire-flame-curved"></i>
+              <h5 class="fw-bold m-0 mx-2">{{'Fitness level'|translate}}</h5>
+            </div>
+            <span *ngIf="userBodyDetails?.fitnessLevel == 10" class=""
+              >{{'ExtraActive'|translate}}</span
+            >
+            <span *ngIf="userBodyDetails?.fitnessLevel == 20" class=""
+              >{{'Very Active'|translate}}</span
+            >
+            <span *ngIf="userBodyDetails?.fitnessLevel == 30" class=""
+              >{{'Active'|translate}}</span
+            >
+            <span *ngIf="userBodyDetails?.fitnessLevel == 40" class=""
+              >{{'Low Active'|translate}}</span
+            >
+          </div>
+          <div class="d-flex p-3 justify-content-between align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
+              <i class="fa-solid pra-col mx-2 fa-fire-flame-curved"></i>
+              <h5 class="fw-bold m-0 mx-2">{{'Goal'|translate}}</h5>
+            </div>
+            <span *ngIf="userBodyDetails?.achiveStatus == 10" class=""
+              >{{'Lean and Toned'|translate}}</span
+            >
+            <span *ngIf="userBodyDetails?.achiveStatus == 20" class=""
+              >{{'Musscular'|translate}}</span
+            >
+          </div>
+        </div>
+        <div class="w-100 training-video">
+          <h3 class="mb-3">{{'Training Videos'|translate}}</h3>
+          <div class="breakfast fs-4">
+            <span class="pry-color mb-2">{{'Breakfast'|translate}}</span>
+            @for (item of sortedTrainingVideosList; track $index) { @if
+            (item.mealTypeId==1) {
+            <div
+              class="item d-flex bg-white justify-content-between align-items-center my-3 rounded-3 p-3"
+            >
+              <div
+                (click)="openTrainingVideo(item)"
+                class="d-flex pointer justify-content-start align-items-center"
+              >
+                <img src="assets/yoga.png" alt="" />
+                <div class="">
+                  <h5 class="fw-bold m-0 mx-2 mb-2">{{ item.title }}</h5>
+                  <span class="mx-2">20 {{'Sets'}}</span>
+                </div>
+              </div>
+              @if (item.isWatched) {
+              <i class="fa-solid fa-play me-3"></i>
+
+              }@else {
+              <img style="width: 40px" src="assets/circle.png" alt="" />
+              }
+            </div>
+
+            } }
+          </div>
+        </div>
+
+        <div class="w-100 training-video">
+          <div class="breakfast fs-4">
+            <span class="pry-color mb-2">{{'Lunch'|translate}}</span>
+            @for (recommendedPlanTrainingVideos of sortedTrainingVideosList;
+            track $index) { @if (recommendedPlanTrainingVideos.mealTypeId==2) {
+            <div
+              class="item d-flex bg-white justify-content-between align-items-center my-3 rounded-3 p-3"
+            >
+              <div
+                (click)="openTrainingVideo(recommendedPlanTrainingVideos)"
+                class="d-flex pointer justify-content-start align-items-center"
+              >
+                <img src="assets/yoga.png" alt="" />
+                <div class="">
+                  <h5 class="fw-bold m-0 mx-2 mb-2">
+                    {{ recommendedPlanTrainingVideos.title }}
+                  </h5>
+                  <span class="mx-2">20 Sets</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-play me-3"></i>
+            </div>
+
+            } }
+          </div>
+        </div>
+        <div class="w-100 training-video">
+          <div class="breakfast fs-4">
+            <span class="pry-color mb-2">{{'Dinner'|translate}}</span>
+            @for (item of sortedTrainingVideosList; track $index) { @if
+            (item.mealTypeId==3) {
+            <div
+              class="item d-flex bg-white justify-content-between align-items-center my-3 rounded-3 p-3"
+            >
+              <div
+                (click)="openTrainingVideo(item)"
+                class="d-flex pointer justify-content-start align-items-center"
+              >
+                <img src="assets/yoga.png" alt="" />
+                <div class="">
+                  <h5 class="fw-bold m-0 mx-2 mb-2">{{ item.title }}</h5>
+                  <span class="mx-2">20 Sets</span>
+                </div>
+              </div>
+              <i class="fa-solid fa-play me-3"></i>
+            </div>
+
+            } }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

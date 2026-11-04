@@ -1,0 +1,70 @@
+<div class="row cart-container justify-content-around">
+  <div class="col-md-7">
+    @for (item of cart; track $index) {
+      <div class="left d-flex justify-content-between">
+        <div class="col-md-3">
+          <img class="img "[src]=" baseUrl+'ProductImages/'+item.imagesURL" alt="Card image cap" appDefaultImage="/assets/default-img.png" alt="" />
+        </div>
+        <div class="row col-md-9">
+          <div class="d-flex justify-content-between">
+            <div class="title">
+              <h3 class="fw-bolder">{{item.productName}}</h3>
+              <p>{{item.overAllRating}} <i class="fa-solid fa-star mt-1 mx-2 fs-6"></i> </p>
+            </div>
+            <h3><span class="sec-color fw-bolder">{{item.price}} </span>EGP</h3>
+          </div>
+          <div class="center">
+            <h5 class="sec-color me-4">
+              <i class="fa-solid fa-truck-moving me-4"></i>{{'Delivery within 24 hours in Cairo, Giza & Alexandria , as for the of the governorates within 72 hours'|translate}}
+            </h5>
+          </div>
+          <div class="bottom d-flex justify-content-between  align-items-center ">
+            <div class="bottom-left pointer" (click)="removeItem(item,$index)">
+              <i class="fa-regular fa-trash-can me-2"></i><span>{{'Remove'|translate}}</span>
+            </div>
+            <div class="bottom-right d-flex align-items-center justify-content-end">
+              <span class="mx-1 ">{{'Quantity'|translate}} </span>
+
+              <div class="d-flex align-items-center justify-content-end">
+                <button (click)="increaseQuantity($index);updateQuantity(item,$index)" class="mx-1 btn btn-outline-success fw-bolder">+</button>
+                <input type="text" appOnlyNumbers class="mx-1 form-control w-25" [value]="quantity[$index]" >
+                <button (click)="updateQuantity(item,$index)" [disabled]="quantity[$index]==0" class="mx-1 btn btn-outline-danger fw-bolder px-3" (click)="decreaseQuantity($index)">-</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+
+  </div>
+  <div class="right col-md-4">
+    <div class="title my-3">
+      <h3 class="fw-bolder">Order Details</h3>
+    </div>
+
+      <div class="center d-flex justify-content-between w-100 pb-4 mb-4">
+        <div class="center-left">
+          <h5 class="my-2">Subtotal <span class="pra-col">({{cart.length}} item)</span></h5>
+          <h5 class="my-2">Shipping</h5>
+        </div>
+        <div class="center-right">
+          <h5 class="my-2 sec-color">{{totalPrice}} EGP </h5>
+          <span class="my-2">Free </span>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <div class=" d-flex justify-content-between">
+          <h4 class="fw-bolder">Total</h4>
+          <h3 class="sec-color fw-bolder">{{totalPrice}} EGP</h3>
+        </div>
+        <div class="w-100 d-flex justify-content-center pt-4">
+          <button class="btn btn-success px-5 py-2" (click)="openAddressDetails()">
+            Checkout
+          </button>
+        </div>
+        </div>
+  </div>
+</div>

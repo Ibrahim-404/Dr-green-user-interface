@@ -1,0 +1,48 @@
+@use '../../../../helpers/variables.scss' as *;
+@use '../../../../helpers/mixin.scss' as *;
+.back{
+  background-color: #f3f3f3;
+  position: absolute;
+  top: 0%;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: -999;
+
+}
+.orders-container{
+  width: 90%;
+  margin: auto;
+  .headers{
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 6px 10px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    margin: 20px 0px;
+
+    }
+    .empty{
+      img{
+        max-width: 100%;
+      }
+      button{
+        border-color:$main-color !important ;
+      }
+    }
+
+}
+.inputs{
+  width: 90%;
+  margin: auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+  .btn{
+    width: fit-content;
+    margin: auto;
+  }
+}
+.contact-info{
+  width: 90%;
+  margin: auto;
+}

@@ -1,0 +1,75 @@
+<div class="col p-2 bg-white rounded-2 m-2 mx-3">
+  <div class="image rounded">
+    <img class="w-100" src="assets/people.png" alt="" />
+  </div>
+
+
+  <div class="title-sec w-100 d-flex justify-content-between">
+
+      <h4 *ngIf="id ==1">{{'Breakfast'|translate}} </h4>
+      <h4 *ngIf="id==3">{{'Dinner'|translate}}  </h4>
+      <h4 *ngIf="id==2">{{'Lunch'|translate}}  </h4>
+
+    <span>{{currChosenUserPlanMealAndFoods.consumedCalories}} {{'Cal'|translate}}</span>
+  </div>
+  <div
+    class="bottom w-100 d-flex justify-content-between align-items-center"
+  >
+  @for (item of recommendedMeals.recommendedPlanMealsAndFoods; track $index) {
+    @if (item.mealTypeId == id) {
+      <p class="m-0">{{'Advised to'|translate}} {{item.recommendedCalories}} {{'Cal'|translate}}</p>
+      <span *ngIf="item.recommendedCalories>currChosenUserPlanMealAndFoods.consumedCalories"  class="btn btn-outline-success">{{'Light amount'|translate}}</span>
+
+    }
+  }
+  </div>
+  <!-- adding border bottom here  -->
+  <div class="meals my-2">
+    <!-- loop here  -->
+
+        @for (ChosenRecommendedFoods of currChosenUserPlanMealAndFoods.recommendedFoods; track $index) {
+
+
+                <div
+                  class="meal px-1 py-2 d-flex justify-content-between align-items-center w-100"
+                >
+                  <div class="meal-left d-flex align-items-center">
+                    <img class="meal-img" src="assets/flower.png" alt="" />
+                    <h5 class="m-0">{{ChosenRecommendedFoods.foodName}}</h5>
+                  </div>
+                  <div class="mea-right">
+                    <span>{{ChosenRecommendedFoods.quantityInGrams}}{{'gm'}} - {{ChosenRecommendedFoods.quantityInCalories}} {{'Cal'|translate}}</span>
+                  </div>
+                </div>
+
+
+
+              }
+              @for (customFoods of currChosenUserPlanMealAndFoods.customFoods; track $index) {
+                <div
+                class="meal px-1 py-2 d-flex justify-content-between align-items-center w-100"
+              >
+                <div class="meal-left d-flex align-items-center">
+                  <img class="meal-img" src="assets/flower.png" alt="" />
+                  <h5 class="m-0">{{customFoods.name}}</h5>
+                </div>
+                <div class="mea-right">
+                  <span>{{customFoods.quantityInGrams}}{{'gm'|translate}} - {{customFoods.calories}} {{'Cal'|translate}}</span>
+                </div>
+              </div>
+              }
+
+        @for (item of currChosenUserPlanMealAndFoods.customFoods; track $index) {
+
+        }
+
+  </div>
+
+    <div *ngIf="_MyplanService.canUpdate"  (click)="openAddFood(id)"  class="add-food w-100 rounded p-2 pointer">
+      <i
+        class="fa-solid text-white fa-plus bg-success rounded-5 p-2 mx-2"
+      ></i>
+      <span>{{'Add food'|translate}}</span>
+    </div>
+
+</div>

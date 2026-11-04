@@ -1,0 +1,165 @@
+<div class="w-100 pry-bg position-relative navbar-container">
+  <!-- top section starts -->
+
+  <div class="top d-flex  justify-content-end align-items-center py-3">
+    <!-- search input starts-->
+    <div class="position-relative mx-3 top-left w-50">
+      <input
+        placeholder="{{ 'what are you looking for ?' | translate }}"
+        class="form-control mx-2 biege-bg pe-3"
+      />
+      <i class="fa-solid fa-magnifying-glass position-absolute pra-col"></i>
+    </div>
+    <!-- search input ends-->
+    <!-- Icons starts-->
+    <div class="top-right d-flex justify-content-end align-items-center w-25">
+      <div
+        class="d-flex align-items-center mx-2 pointer"
+        (click)="
+          _SharedService.selectedLang === 'en'
+            ? (_SharedService.selectedLang = 'ar')
+            : (_SharedService.selectedLang = 'en');
+            changeLang()
+        "
+      >
+        <img src="assets/svgs/language.svg" style="width: 25px" class="lang" />
+        <h6 class="m-0 px-1">{{ _SharedService.selectedLang }}</h6>
+      </div>
+      <i class="fa-regular pointer fa-heart mx-2" routerLink="/favorite"></i>
+      <img src="assets/svgs/card.svg" class="pointer mx-2" routerLink="/cart" />
+
+      <!-- Icons ends-->
+      <!-- User Auth status starts -->
+
+      <div *ngIf="_auth.isLogin | async; else loggedOut">
+        <div ngbDropdown class="nav-item px-3" role="presentation">
+          <li class="menu d-flex justify-content-center align-items-center">
+            <button
+              type="button"
+              class="nav-link d-flex align-items-center justify-content-center"
+              ngbDropdownToggle
+            >
+
+              <div class="profile-content" routerLink="/home">
+                <h5 class="fs-6 fw-bold m-0">{{ userData.family_name }}</h5>
+                <p class="m-0">{{ userData.role }}</p>
+              </div>
+            </button>
+            <div ngbDropdownMenu>
+              <button routerLinkActive="active" routerLink="/profile" ngbDropdownItem>
+                {{ "Edit Profile" | translate }}
+              </button>
+              <button routerLink="/my-orders" ngbDropdownItem>
+                {{ "My orders" | translate }}
+              </button>
+              <button routerLink="/address" ngbDropdownItem>
+                {{ "My addresses" | translate }}
+              </button>
+
+              <button (click)="logout()" ngbDropdownItem>
+                {{ "Sign out" | translate }}
+              </button>
+            </div>
+          </li>
+        </div>
+      </div>
+
+      <ng-template #loggedOut>
+        <button (click)="open()" class="btn biege-bg px-4 mx-3">
+          {{'Log In'|translate}}
+        </button>
+      </ng-template>
+
+
+
+      <!-- User Auth status ends -->
+    </div>
+    <!-- Icons ends-->
+  </div>
+  <!-- top section ends -->
+  <div class="down biege-bg">
+    <!-- Bottom section starts -->
+    <ul
+      class="d-flex justify-content-center text-decoration-none list-unstyled py-3 align-items-center"
+    >
+      <li class="px-2">
+        <a routerLinkActive="active" routerLink="/home" routerLinkActive="router-link-active">{{
+          "Home" | translate
+        }}</a>
+      </li>
+      <li class="px-2">
+        <a routerLinkActive="active" routerLink="/about" routerLinkActive="router-link-active">{{
+          "About" | translate
+        }}</a>
+      </li>
+      <div ngbDropdown class="d-inline-block">
+        <button
+          type="button"
+          class="btn mt-0"
+          id="dropdownBasic1"
+          ngbDropdownToggle
+        >
+          {{ "Category" | translate }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          @for (item of parentsCategories; track $index) { @if
+          (item.categoryParentId==null) {
+
+          <div class="btn-group me-3 w-100">
+            <div
+              class="btn-group w-100"
+              ngbDropdown
+              role="group"
+              aria-label="Button group with nested dropdown"
+            >
+              <button
+                type="button"
+                class="btn w-100"
+                [routerLink]="'/products/category/' + item.id"
+              >
+                {{ item.name }}
+              </button>
+              <button
+                type="button"
+                class="btn dropdown-toggle-split"
+                ngbDropdownToggle
+              ></button>
+
+              <div class="dropdown-menu" ngbDropdownMenu>
+                @for (child of allCategoriesData; track $index) {
+                @if(child.categoryParentId==item.id) {
+                <button
+                  ngbDropdownItem
+                  [routerLink]="'/products/category/' + child.id"
+                >
+                  {{ child.name }}
+                </button>
+                } }
+              </div>
+            </div>
+          </div>
+          } }
+          <li class="text-center"><a routerLink="/products"> All Products</a></li>
+        </div>
+      </div>
+      <!-- <li class="px-2"><a routerLink="/" routerLinkActive="router-link-active" >Categories</a></li> -->
+      <li class="px-2">
+        <a routerLink="/tips" routerLinkActive="router-link-active">{{
+          "Tips" | translate
+        }}</a>
+      </li>
+      <li class="px-2">
+        <a routerLink="/contacts" routerLinkActive="router-link-active">{{
+          "Contact Us" | translate
+        }}</a>
+      </li>
+    </ul>
+  </div>
+  <img
+
+    class="position-absolute logo"
+    src="assets/logo.png"
+    alt="logo"
+  />
+  <!-- Bottom section ends -->
+</div>

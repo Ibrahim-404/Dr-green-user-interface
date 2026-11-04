@@ -1,0 +1,84 @@
+@use "../../../../helpers/mixin.scss" as *;
+@use "../../../../helpers/variables.scss" as *;
+.cover {
+
+  .fa-xmark ,a {
+    cursor: pointer;
+  }
+
+  .item-container {
+    .pattern {
+      position: absolute;
+      right: 20px;
+      top: 10%;
+      width: 160px;
+    }
+
+    background-color: white;
+
+    // font-weight: 500;
+    @include radius(16px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .log-form {
+      label {
+        margin: 10px 0px 5px 0px;
+      }
+      input {
+        margin: 5px 0px 15px 0px !important;
+      }
+      .forget {
+        width: 100%;
+        text-align: end;
+
+        a {
+          color: $main-color;
+          text-decoration: underline;
+        }
+      }
+    }
+    .fa-xmark {
+      top: 30px;
+      right: 30px;
+      font-size: 30px;
+    }
+  }
+  .or {
+  }
+  .or::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    left: 0px;
+    height: 2px;
+    width: 45%;
+    background-color: $sec-color;
+  }
+  .or::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 0px;
+    height: 2px;
+    width: 45%;
+    background-color: $sec-color;
+  }
+  .social-log {
+    .item {
+      @include radius(8px);
+      border: solid 0.2px #c3c2c2;
+      padding: 10px 40px;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0px;
+    }
+  }
+  .sign-up a {
+    text-decoration: none;
+    color: $sec-color;
+    margin: 0px 5px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,96 @@
+<div class="my-addresses my-3">
+  <div class="headers row">
+    <div class="col-md-8">
+      <h2 class="fw-bolder m-2">{{'My Addresses'|translate}}</h2>
+      <h4 class="pra-col m-2 ">
+        {{'Mange your saved addresses for fast and easy checkout across our marketplaces'|translate}}
+       </h4>
+    </div>
+    <div class="col-md-4 d-flex justify-content-end align-items-center ">
+       <button class="btn btn-success px-5 py-3" (click)="openAddNewAddress()">
+        {{'Add New Address'|translate}}
+       </button>
+    </div>
+  </div>
+  @if (addressesData.length==0) {
+    <div
+    class="empty w-100 d-flex justify-content-center align-items-center flex-column mb-5"
+    >
+    <img class="" src="/assets/map-location.png" alt="" />
+    <h3 class="fw-bold">
+      {{"You don't add address yet"|translate}}
+    </h3>
+
+  </div>
+} @else if(addressesData.length>0) {
+
+  <h3 class="my-3 fw-bolder">{{'Default address'|translate}}</h3>
+  @for (item of addressesData; track $index) {
+    @if (item.isDefault) {
+      <div class="default  d-flex justify-content-between">
+        <div class="left">
+        <div class="d-flex align-items-center ">
+          <i class="fa-solid fa-house fs-4 me-3"></i>
+          <h4 class="fw-bolder m-0">{{'Home'|translate}}</h4>
+        </div>
+
+        <div class="">
+          <h4 class="my-3"> <span class="pra-col" >{{'Home'|translate}}</span>  : {{item.fName}} {{item.lName}}  </h4>
+          <h4 class="my-3"><span class="pra-col">{{'Address'|translate}}</span>  : {{item.addressLocation}}  </h4>
+          <h4 class="my-3"><span class="pra-col">{{'Phone'|translate}}</span>  : {{item.phoneNumber}}   </h4>
+        </div>
+      </div>
+      <div class="right w-25 d-flex flex-column justify-content-between align-items-end">
+        <div class="top ">
+          <i  class="fa-regular fa-pen-to-square pointer fs-2 mx-3 "></i>
+          <i  class="fa-regular fa-trash-can mx-2 sec-color fs-4 pointer opacity-50 disabled "></i>
+        </div>
+        <div class="bottom d-flex justify-content-between  w-100">
+          <h4>{{'Default address'|translate}}</h4>
+          <label class="switch">
+            <input type="radio" (click)="setAddressDefault(item.id)" disabled [checked]="item.isDefault" class="">
+            <span class="slider round opacity-50"></span>
+          </label>
+        </div>
+      </div>
+      </div>
+
+    }
+
+}
+  <h3 class="my-3 fw-bolder">{{'Other addresses'|translate}}</h3>
+  @for (item of addressesData; track $index) {
+    @if (!item.isDefault) {
+      <div class="default  d-flex justify-content-between">
+        <div class="left">
+        <div class="d-flex align-items-center ">
+          <i class="fa-solid fa-house fs-4 me-3"></i>
+          <h4 class="fw-bolder m-0">{{'Home'|translate}}</h4>
+        </div>
+
+        <div class="">
+          <h4 class="my-3"> <span class="pra-col" >{{'Home'|translate}}</span>  : {{item.fName}} {{item.lName}}  </h4>
+          <h4 class="my-3"><span class="pra-col">{{'Address'|translate}}</span>  : {{item.addressLocation}}  </h4>
+          <h4 class="my-3"><span class="pra-col">{{'Phone'|translate}}</span>  : {{item.phoneNumber}}   </h4>
+        </div>
+      </div>
+      <div class="right w-25 d-flex flex-column justify-content-between align-items-end">
+        <div class="top ">
+          <i class="fa-regular fa-pen-to-square pointer fs-2 mx-3"></i>
+          <i (click)="deleteAddress(item.id)" class="fa-regular fa-trash-can mx-2 sec-color fs-4 pointer"></i>
+        </div>
+        <div class="bottom d-flex justify-content-between  w-100">
+          <h4>{{'Default address'|translate}}</h4>
+          <label class="switch">
+            <input type="checkbox" (click)="setAddressDefault(item.id)" [checked]="item.isDefault">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      </div>
+
+    }
+
+}
+}
+</div>

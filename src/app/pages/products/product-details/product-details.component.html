@@ -1,0 +1,221 @@
+<div class="container-fluid row">
+  <!-- header section starts -->
+  <div class="top-sec row mb-4">
+    <div class="col-md-5 row">
+      <div class="col-md-3">
+        @for (item of productImages; track $index) {
+        <img
+          class="w-100 my-3"
+          [class.selected]="item.selected"
+          (click)="toggleSelect($index)"
+          [src]="basePath + 'ProductImages/' + item.img"
+          alt="Card image cap"
+          appDefaultImage="/assets/default-img.png"
+          alt=""
+        />
+
+        }
+      </div>
+      <div class="col-md-9 my-2">
+        <img
+          class="w-100 main-img"
+          [src]="baseUrl + 'ProductImages/' + selectedValue"
+          alt="Card image cap"
+          appDefaultImage="/assets/default-img.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="col-md-7 d-flex flex-column justify-content-between">
+      <span>{{ "Best Seller" | translate }}</span>
+      <div class="d-flex justify-content-between">
+        <div class="title">
+          <h3 class="fw-bolder">{{ productData.name }}</h3>
+          <p>
+            {{ productData.overAllRating }}
+            <i class="fa-solid fa-star star-col mt-1 mx-2 fs-6"></i> (114)
+          </p>
+        </div>
+        <h3>
+          <span class="sec-color">{{ productData.price }} </span>EGP
+        </h3>
+      </div>
+      <div class="center-sec">
+        <p class="pra-col">{{ "Description" | translate }}</p>
+        <p class="pra-col">
+          {{ productData.description }}
+        </p>
+        <p class="sec-color">
+          <i class="fa-solid fa-truck-moving"></i
+          >{{
+            "Delivery within 24 hours in Cairo, Giza & Alexandria , as for the of the governorates within 72 hours"
+              | translate
+          }}
+        </p>
+      </div>
+      <div class="bottom-sec d-flex align-items-end">
+        <div class="">
+          <h5></h5>
+          <label for="options">{{'Quantity'|translate}} </label>
+          <select
+            class="form-select"
+            id="options"
+            [(ngModel)]="selectedQuantity"
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">5</option>
+            <option value="4">6</option>
+            <option value="4">7</option>
+            <option value="4">8</option>
+            <option value="4">9</option>
+            <option value="4">10</option>
+          </select>
+        </div>
+        <button (click)="addProductToCart()" class="btn btn-success ms-3 px-5">
+          {{ "Add To Cart" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- header section ends -->
+  <!-- overview section starts -->
+
+  <div class="overview mb-4">
+    <div class="">
+      <h6>{{ "Overview" | translate }}</h6>
+    </div>
+    <div class="highlights px-4">
+      <div class="row justify-content-between">
+        <div class="col-md-6">
+          <h6>{{ "Highlights" | translate }}</h6>
+          @for (highlight of productData.highlights; track $index) {
+          <ul>
+            @for (item of highlight.title; track $index) {
+
+            <li>
+              {{ item }}
+            </li>
+            }
+          </ul>
+          }
+        </div>
+        <div class="col-md-4">
+          <h6>{{'Specifitions'|translate}}</h6>
+          <table class="table table-striped">
+            <tbody>
+              @for (specification of productData.specifications; track $index) {
+
+              <tr>
+                <td>{{ specification.title }}</td>
+                <td>{{ specification.content }}</td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- overview section ends -->
+  <!-- Product Ratings & Review section starts -->
+
+  <div class="raiting-sec px-4 my-4">
+    <div class="my-3">
+      <h4>{{'Product Ratings & Review'|translate}}</h4>
+    </div>
+    <div class="row all px-4">
+      <!-- left section starts -->
+      <div class="col-md-4 reviews-container pe-3 py-3">
+        <h5>{{'Over all Rating'|translate}}</h5>
+        <div class="rate">
+          <p class="m-0 mt-4">{{ productData.overAllRating }} ({{ratingSum}})</p>
+          <ngb-rating
+            class="fs-3 star-col"
+            [readonly]="true"
+            [max]="5"
+            [(rate)]="productData.overAllRating"
+          />
+          <!-- [(rate)]="rating[0]" -->
+
+          <div class="reviews mt-4">
+             @for (item of ratingCounts; track $index) {
+
+               <div class="review d-flex align-items-center justify-content-between ">
+                 <input type="checkbox" [checked]="addRate ==(5-$index)" (change)="onCheckboxChange(5-$index)" name="rate" class="mx-2" [value]="addRate" />
+                 <span class="d-flex align-items-center"
+                   >{{ 5-$index }} <i class="fa-solid fa-star pry-color mb-1 mx-2"></i
+                 ></span>
+                 <span class="col  my-0">
+                   <ngb-progressbar class="mb-0 mx-2" type="success" [max]="5" [value]="ratingCounts[4-$index]" />
+                 </span>
+
+                 <p class="my-0 ">({{ ratingCounts[4-$index] }})</p>
+               </div>
+             }
+
+          </div>
+        </div>
+      </div>
+      <!-- left section ends -->
+      <!-- right section starts -->
+
+      <div class="col-md-8 customer-reviews p-0">
+        <h5 class="m-4">{{'Customer Review'|translate}}</h5>
+        @for (item of productData.reviewProducts; track $index) {
+
+        <div class="customer-review d-flex justify-content-between p-3 me-4">
+          <div class="review-left d-flex align-items-center">
+            <h2 class="me-3">{{item.userName.toUpperCase()|slice:0:1}}</h2>
+            <div class="">
+              <h4>{{ item.userName }}</h4>
+              <p>{{ item.createdDate  }}</p>
+            </div>
+          </div>
+          <div class="review-right d-flex flex-column align-items-end">
+            <ngb-rating
+              class="fs-3 star-col"
+              [readonly]="true"
+              [max]="5"
+              [(rate)]="item.rating"
+            />
+
+            <p class="mt-3">
+              {{ item.comment }}
+            </p>
+          </div>
+        </div>
+        }
+
+        <div class="add-comment d-flex p-2 my-4 mx-4 rounded-2">
+          <input type="text" class="form-control" ngModel  [(ngModel)]="addComment" />
+          <i
+            class="fa-solid fs-3 text-center mx-4 sec-bg p-2 rounded-5 fa-paper-plane"
+            (click)="addingReview()"
+          ></i>
+        </div>
+        <div *ngIf="errTitle" class="alert alert-danger">{{ errTitle }}</div>
+      </div>
+      <!-- right section ends -->
+    </div>
+  </div>
+  <!-- Product Ratings & Review section ends -->
+  <!-- More From Green Tea section starts -->
+  <h2 class="fw-bolder my-3">{{'More From Green Tea'|translate}}</h2>
+  <div class="w-100 py-4 px-4 my-4">
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of categoryProducts">
+        <ng-template carouselSlide [id]="slide.id.toString()">
+          <div>
+            <app-card
+
+              [card]="slide"
+            ></app-card>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+  <!-- More From Green Tea section ends -->
+</div>

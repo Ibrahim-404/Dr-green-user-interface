@@ -1,0 +1,28 @@
+@use '../../../../helpers/mixin.scss' as *;
+@use '../../../../helpers/variables.scss' as *;
+img
+{
+  height: 300px;
+  width: 200px;
+  @include radius(10px);
+  border: 1px solid $sec-color;
+  padding: 10px;
+}
+.end{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  i{
+    width: 25px;
+    height: 25px;
+    @include radius(50%);
+    background-color: $sec-color;
+    color: white;
+  }
+}
+.center
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

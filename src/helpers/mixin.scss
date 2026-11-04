@@ -1,0 +1,22 @@
+@mixin dimension($width,$height){
+  width: $width;
+  height: $height;
+};
+@mixin radius($x)
+{
+  border-radius: $x;
+  -webkit-border-radius: $x;
+  -moz-border-radius: $x;
+  -ms-border-radius: $x;
+  -o-border-radius: $x;
+};
+@mixin absolute($t,$l){
+  position: absolute;
+  left: $l;
+  top: $t;
+}
+@mixin small($width){
+@media screen and (max-width:$width) {
+
+}
+};

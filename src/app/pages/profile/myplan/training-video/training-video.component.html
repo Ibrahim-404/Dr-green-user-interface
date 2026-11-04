@@ -1,0 +1,40 @@
+<div class="container-fluid p-5">
+  <div class="top">
+    <video
+      #videoPlayer
+      width="100%"
+      height="550px"
+      controls
+      (loadedmetadata)="onMetadataLoaded()"
+    >
+      <source
+        [src]="baseUrl + 'TrainingProgramVideos/' + selectedVideo.videoUrl"
+        type="video/mp4"
+
+      />
+    </video>
+
+    <div class="w-100 fw-bolder d-flex justify-content-between">
+      <h3>{{selectedVideo.title}}</h3>
+      <div class="d-flex">
+        <span class="mx-3">{{selectedVideo.goalValue}} {{selectedVideo.goalName}}</span>
+        <span>{{selectedVideo.mealTypeName}}</span>
+      </div>
+    </div>
+    <p>{{selectedVideo.description}}</p>
+    <div class="w-100 d-flex justify-content-center align-items-center">
+      <button (click)="logTrainingVideo()" class="btn btn-success px-5">{{'Done' | translate}}</button>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <h4>Up Next</h4>
+    <div class="d-flex justify-content-between pointer">
+      <div *ngFor="let item of relativeVideos.recommendedPlanTrainingVideos" class="col-md-3 mx-2" (click)="toggleSelect(item)">
+        <video width="100%" height="150px">
+          <source [src]="baseUrl + 'TrainingProgramVideos/' + item.videoUrl" type="video/mp4"/>
+        </video>
+      </div>
+    </div>
+  </div>
+</div>

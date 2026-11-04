@@ -1,0 +1,236 @@
+
+<div class="home-container">
+  <!-- slider starts -->
+  <div class="first-slide">
+  @if (!_SharedService.loading) {
+
+      <ngb-carousel [showNavigationArrows]="true" [showNavigationIndicators]="true" [pauseOnHover]="true">
+        <ng-template ngbSlide *ngFor="let slide of adsData">
+          <div class="picsum-img-wrapper d-flex justify-content-center bg-secondary" >
+            <img [src]="basePath+'AdsDrGreenMedia/'+slide.adsImages[0]" alt="Random first slide" appDefaultImage="/assets/default-img.png"/>
+          </div>
+
+        </ng-template>
+
+      </ngb-carousel>
+    }@else {
+
+        <app-loader></app-loader>
+
+    }
+  </div>
+  <!-- slider ends -->
+
+  <!-- About us starts -->
+  <div
+    class="about-us py-3 position-relative d-flex justify-content-center align-items-center"
+  >
+    <div
+      class="row w-100 m-auto container justify-content-between align-items-center"
+    >
+      <img class="position-absolute pattern" src="assets/pattern1.png" alt="" />
+      <div class="left col-md-6">
+        <h3 class="text-center fw-bold mb-4">{{ lookUpData?.headlin }}</h3>
+
+        <p class="about-caption">
+          {{ lookUpData?.content | slice : 0 : 200 }} ....
+          <a routerLink="/about"><span class="link">{{'Read More'|translate}}</span></a>
+        </p>
+      </div>
+      <div class="right col-md-4">
+        <img class="w-100" src="/assets/people.png" alt="people" />
+      </div>
+    </div>
+  </div>
+  <!-- About us ends -->
+  <!-- plan section starts -->
+  <div
+    class="plan row align-items-center justify-content-end position-relative overflow-hidden"
+  >
+    <div class="img col-md-4">
+      <img class="w-100 p-0 m-0" src="assets/gym-guy.png" alt="" />
+    </div>
+    <div class="content col-md-7 d-flex justify-content-end">
+      <img class="flower position-absolute" src="assets/flower.png" alt="" />
+
+      <div class="contents mx-auto">
+        <h1 class="fw-bold">
+          {{'Get your'|translate}} <span class="fw-bolder"> {{'Personalized daily plan'|translate}} </span>
+        </h1>
+        <p class="co-gray">{{'Build health habits with Doctor Green'|translate}}</p>
+        <div class="d-flex justify-content-center w-100 mt-5">
+
+
+          <button (click)="openPlan()" class="btn btn-success px-5 py-2 my-3">
+            {{'Calories Calculator'|translate}}
+          </button>
+
+        </div>
+      </div>
+    </div>
+    <!-- plan section ends -->
+  </div>
+  <!-- bestseller section starts -->
+  <div class="bestseller w-100 py-4 px-4 my-4">
+    <h3 class="mx-2">{{'Bestseller'|translate}}</h3>
+    <owl-carousel-o [options]="customOptions">
+
+      <ng-container *ngFor="let slide of bestSeller">
+        <ng-template carouselSlide [id]="slide.id.toString()">
+          <div >
+            <app-card   [card]="slide"></app-card>
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+
+  </div>
+
+  <!-- bestseller section ends -->
+  <!-- A Balanced Approach to Weight Loss starts -->
+
+  <div class="balanced w-100 my-3">
+    <h3 class="text-center py-4">{{'A Balanced Approach to Weight Loss'|translate}}</h3>
+    @if (images) {
+    <ngb-carousel class="" Car>
+      @for (items of groupedImages; track $index) {
+        <ng-template ngbSlide>
+          <div class="row  justify-content-evenly">
+          @for (item of items; track $index) {
+
+              <div  class="cards pointer col-md-3 picsum-img-wrapper" style="width: 18rem">
+                <img
+                class="w-100 rounded-3"
+                [src]="basePath+'TipsDrGreenMedia/'+item?.url"
+                alt="Card image cap"
+                appDefaultImage="/assets/default-img.png"
+                />
+                <div class="card-body">
+                  <h5 class="card-title text-center my-3">
+                    {{item?.title}}
+                  </h5>
+                </div>
+              </div>
+            }
+          </div>
+          </ng-template>
+          }
+
+    </ngb-carousel>
+
+    <div class="w-100 d-flex justify-content-center py-5">
+      <button routerLink="/tips" class="btn btn-success px-5 py-2 my-3">{{'Read More' | translate }}</button>
+    </div>
+    }
+  </div>
+  <!-- A Balanced Approach to Weight Loss ends -->
+  <!-- A nutrition Approach to Weight Loss starts -->
+
+  <div class="nutrition position-relative">
+    <img
+      class="position-absolute flower-pattern"
+      src="/assets/flower.png"
+
+      alt=""
+    />
+    <div class="nu-header d-flex justify-content-center">
+      <h3 class="w-25 nutrition-title text-center">
+        {{'Nutrition Tracking Works, here’s the proof'|translate}}
+      </h3>
+    </div>
+    <!-- header ends -->
+    <div class="low w-100">
+      <div class="row m-0 justify-content-between align-items-center">
+        <!-- @for (item of reviewsData; track $index) { -->
+        <div class="col-md-5 my-2 row">
+          @for (item of reviewsData|limitToPipe:0:4; track $index) {
+          <div class="col-md-5">
+
+
+           <video
+           [poster]="
+             basePath + 'ReviewSectionClientImages/' + item.imagePath
+           "
+           width="100%"
+           height="150px"
+           controls
+         >
+           <source
+             [src]="basePath + 'ReviewSectionVideos/' + item.videoPath"
+             type="video/mp4"
+           />
+         </video>
+          </div>
+        }
+        </div>
+      <!-- } -->
+        <!-- slider starts -->
+        <div class="test col-md-2">
+          @if (reviewsData) {
+          <ngb-carousel
+            [showNavigationArrows]="showNavigationArrows"
+            [showNavigationIndicators]="showNavigationIndicators"
+          >
+            @for (item of reviewsData ; track item ) {
+            <!-- @if(item.review!==null){ -->
+            <ng-template ngbSlide>
+              <div
+                class="d-flex justify-content-center align-items-center my-5"
+              >
+                <div
+                  class="center d-flex flex-column justify-content-center align-items-center"
+                >
+                  <p class="text-center">
+                    {{ item?.review }}
+                  </p>
+                  <div
+                    class="person my-3 d-flex align-items-center justify-content-around m-auto"
+                  >
+                    <img [src]="basePath+'ReviewSectionClientImages/'+item.imagePath" alt="" appDefaultImage="/assets/default-img.png" class="pic mx-2" />
+                    <div class="person-title">
+                      <h4 class="fw-bolder">{{item.name}}</h4>
+                      <h4 class="pry-color fw-bolder">{{item.jopTitle}}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+
+            }
+            <!-- } -->
+          </ngb-carousel>
+          }
+        </div>
+        <!-- <hr /> -->
+        <!-- slider ends -->
+        <!-- @if(reviewsData.length){ -->
+        <div class="col-md-5 row m-0">
+          @if (reviewsData) {
+
+            @for (item of reviewsData; track $index) {
+            <!-- @for (item of reviewsData|limitToPipe:4:8; track $index) { -->
+            <div class="col-md-5">
+
+              <video
+                [poster]="
+                  basePath + 'ReviewSectionClientImages/' + item.imagePath
+                "
+                width="100%"
+                height="150px"
+                controls
+              >
+                <source
+                  [src]="basePath + 'ReviewSectionVideos/' + item.videoPath"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+            }
+          }
+        </div>
+        <!-- } -->
+      </div>
+    </div>
+  </div>
+  <!-- A nutrition Approach to Weight Loss ends -->
+</div>

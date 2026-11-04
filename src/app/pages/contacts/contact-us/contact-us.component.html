@@ -1,0 +1,45 @@
+<div class="back position-fixed"></div>
+<div class="w-100 ">
+  <div class="orders-container bg-white text-start">
+    <!-- <p>my-orders works!</p> -->
+    <div class="headers ">
+      <h2 class="fw-bolder m-2">{{'Get in'|translate}} <span class="sec-color">{{'Touch'|translate}}</span></h2>
+      <h6 class="pra-col m-2">{{'Our team is ready to leverage its expertise and capabilities to serve you in the best possible way. Please complete your inquiry and share some details so we can respond to you as soon as possible.'|translate}}</h6>
+    </div>
+
+
+  </div>
+  <div class="inputs bg-white ">
+    <form (ngSubmit)="onSubmit()" [formGroup]="contactForm" class="p-3" >
+
+    <div class="form-group">
+      <input formControlName="name" [placeholder]="'Name'|translate" id="name" type="text" class="form-control my-2">
+      <input formControlName="email" [placeholder]="'Email Address'|translate" id="email" type="text" class="form-control my-4">
+      <input formControlName="phoneNumber" [placeholder]="'Phone Number'|translate " type="text" id="phone" class="form-control my-4">
+      <textarea  formControlName="message"  [placeholder]="'Message.........'|translate" id="message" class="form-control my-4"></textarea>
+    </div>
+   <div class="w-100 d-flex justify-content-center">
+    <button [disabled]="contactForm.invalid" type="submit" class="btn btn-success px-4 pry-bg border-0">
+      {{'Send Message'|translate}}
+    </button>
+   </div>
+  </form>
+
+  </div>
+  <div class="contact-info row bg-white p-3 my-4 justify-content-evenly">
+    <div class="col-md-4 d-flex justify-content-center align-items-center">
+      <i class="fa-regular fa-envelope-open fs-2"></i>
+      <div class="comtent mx-3">
+        <h4 class="fw-bolder">{{'Email'|translate}}</h4>
+        <a class="sec-color fw-bold text-decoration-none" >Support&#64;Dr.green.com</a>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex justify-content-center align-items-center">
+      <i class="fa-solid fa-phone fs-2"></i>
+      <div class="comtent mx-3">
+        <h4 class="fw-bolder">{{'Phone'|translate}}</h4>
+        <a class="sec-color fw-bold text-decoration-none"  >01552666657</a>
+      </div>
+    </div>
+  </div>
+</div>

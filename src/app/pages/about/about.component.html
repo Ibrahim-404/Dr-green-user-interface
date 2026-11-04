@@ -1,0 +1,118 @@
+<div class="row w-100 justify-content-evenly position-relative py-5 px-3">
+  <img
+    [ngStyle]="
+      _SharedService.selectedLang === 'ar'
+        ? { right: '-3%', transform: 'rotate(97deg)', top: '-6rem' }
+        : { left: '0%', top: '-180px' }
+    "
+    class="pattern1 position-absolute"
+    src="/assets/pattern1.png"
+    alt=""
+  />
+
+  <div class="left col-md-10 col-lg-7 my-2 p-4 pb-0">
+    <h2 class="px-5 pb-2 fw-bolder m-auto title">{{ about?.headlin }}</h2>
+    <ul class="fs">
+      <li>
+        {{
+          "our true mother is nature, A good mother's health represents the best hope for offspring all health, happiness, and longevity."
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "Green Healthy is Egypt’s leading natural healthy products company. Based on the vision of our founders Dr. Said Mahmoud Elraey and Dr. Soliman Aly Elbakry, we are passionate about natural health and inspiring people to take control of and invest in their wellbeing. We develop high-quality products and services that deliver a more natural approach to health, based on our expertise in herbs and nutrients."
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "We are nature lovers, a health and wellness community which born to support you in living your best life."
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "we’ve dream of empowering millions of people to make real changes to their lives with our science-backed natural products. We dedicate ourselves to humanity’s quest for health, happiness, and longevity through the innovation and modernization of Herbal Medicine."
+            | translate
+        }}
+      </li>
+      <li>
+        {{
+          "Our products deliver professional, quality, safe, and reliable herbal products through innovation and pioneering research in the modernization of traditional medicine."
+            | translate
+        }}
+      </li>
+    </ul>
+  </div>
+  <div
+    class="right col-lg-4 col-md-10 d-flex justify-content-center align-items-start mb-2 position-relative"
+  >
+    <!-- <div class="position-absolute"></div> -->
+    <img class="w-100" src="/assets/about1.png" alt="" />
+  </div>
+</div>
+<div class="vision w-100 p-5 text-center position-relative">
+  <img
+    [ngClass]="_SharedService.selectedLang == 'ar' ? 'start-0' : 'end-0'"
+    class="position-absolute top-0"
+    src="/assets/flower.png"
+    alt=""
+  />
+  <h2 class="px-5 pb-2 fw-bolder m-auto title my-4">{{ vision?.headlin }}</h2>
+  <p class="fs">
+    {{ vision?.content }}
+  </p>
+</div>
+<div class="mision w-100 p-5 text-center position-relative">
+  <img
+    class="position-absolute bottom-0"
+    [ngClass]="_SharedService.selectedLang == 'en' ? 'start-0' : 'end-0'"
+    src="/assets/flower.png"
+    alt=""
+  />
+  <h2 class="px-5 pb-2 fw-bolder m-auto title my-4">
+    {{ mission?.headlin }}
+  </h2>
+  <div class="row justify-content-around align-items-center">
+    <p class="fs col-md-7 text-start">
+      {{ mission?.content }}
+    </p>
+    <img class="col-md-3" [src]="basePath + mission?.url" alt="hero" />
+  </div>
+</div>
+
+<div class="value p-3">
+  <div class="container">
+    <div class="w-100 d-flex justify-content-center">
+      <h2 class="px-5 pb-2 fw-bolder text-center ms-5 title">
+        {{ "Our Value" | translate }}
+      </h2>
+    </div>
+    @if (images) {
+    <ngb-carousel>
+      <ng-template ngbSlide>
+        <div class="row justify-content-around px-0">
+          @for (item of ourValue; track $index) {
+
+          <div class="card col-md-5 picsum-img-wrapper my-5">
+            <img
+              class="card-img-top mt-3"
+              [src]="basePath + item?.url"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title fw-bold text-center my-3">
+                {{ item?.headlin }}
+              </h5>
+              <p class="card-text">{{ item?.content }}</p>
+            </div>
+          </div>
+
+          }
+        </div>
+      </ng-template>
+    </ngb-carousel>
+    }
+  </div>
+</div>

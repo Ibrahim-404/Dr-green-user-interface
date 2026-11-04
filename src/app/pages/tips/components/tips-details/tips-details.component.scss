@@ -1,0 +1,22 @@
+@use '../../../../../helpers/variables.scss' as *;
+@use '../../../../../helpers/mixin.scss' as *;
+
+
+
+.pic {
+  @include dimension(80px, 80px);
+  border: solid 0.5px $sec-color;
+  @include radius(50%);
+}
+.sec-title
+{
+  border-bottom: solid 3px $sec-color;
+  width: fit-content;
+}
+.main-pic
+{
+  min-width: 50%;
+  max-width: 500px !important;
+  max-height: 500px !important;
+  object-fit: contain;
+}

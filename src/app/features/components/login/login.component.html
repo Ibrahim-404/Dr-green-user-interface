@@ -1,0 +1,66 @@
+<div class="p-0 m-0 cover ">
+
+  <div class="item-container  position-relative">
+    <img class="pattern" src="assets/flower.png" alt="pattern">
+    <i (click)="activeModal.close('Close click')" class="fa-solid fa-xmark position-absolute"></i>
+    <div class="logo my-3">
+      <img src="/assets/logo.png" alt="logo">
+    </div>
+    <div class="log-form  w-75">
+      <h3 class="mb-3 fw-bold">Sign In</h3>
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="email">Phone Number or Email Address</label>
+        <input id="email" formControlName="email"  placeholder="hello@gmail.com" type="email" class="form-control">
+        @if (loginForm.dirty) {
+
+            @if (emailCtrl.hasError('required')) {
+
+              <div class="alert alert-danger">Email is required</div>
+            }@else if (emailCtrl.hasError('email')) {
+
+              <div class="alert alert-danger">Email is invalid</div>
+            }
+            @if (authStatus!=="") {
+            <div class="alert alert-danger">{{authStatus}}</div>
+
+            }
+          }
+
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" formControlName="password" placeholder="**************" type="password" class="form-control">
+      </div>
+      <div class="forget">
+
+        <a (click)="openForgetPassword()" >Forgot Password?</a>
+      </div>
+      <div class="sign-btn d-flex justify-content-center my-4">
+        <button type="submit" [disabled]="loginForm.invalid" class="btn  btn-success pry-bg border-0 px-5">Sign In</button>
+
+      </div>
+    </form>
+    </div>
+    <div class="w-75 position-relative ">
+      <p class="or text-center m-0">OR</p>
+    </div>
+    <div class="social-log my-3">
+      <div class="item face d-flex">
+        <i class="fa-brands fa-facebook text-primary mx-2"></i>
+        <h6 class="m-0">Continue with Facebook</h6>
+      </div>
+      <div class="item face d-flex">
+        <i class="fa-brands fa-google mx-2"></i>
+        <h6 class="m-0">Continue with Google</h6>
+      </div>
+      <div class="item face d-flex">
+        <i class="fa-brands fa-square-x-twitter mx-2"></i>
+        <h6 class="m-0">Continue with Twitter</h6>
+      </div>
+      <div class="sign-up">
+    <span>Don’t have an account?<a (click)="openSignUp()">Sign up</a></span>
+      </div>
+    </div>
+  </div>
+</div>

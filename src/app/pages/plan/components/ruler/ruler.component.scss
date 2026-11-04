@@ -1,0 +1,32 @@
+.ruler {
+  display: flex;
+  height: 40px;
+  position: relative;
+}
+
+.ruler-unit {
+  flex: 1;
+  position: relative;
+}
+
+.ruler-mark {
+  height: 10px;
+  border-left: 1px solid black;
+  position: absolute;
+  bottom: 0;
+}
+
+.long-mark {
+  height: 20px;
+}
+
+.medium-mark {
+  height: 15px;
+}
+
+.ruler-number {
+  position: absolute;
+  bottom: 0;
+  left: -4px;
+  font-size: 10px;
+}

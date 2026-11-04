@@ -1,0 +1,54 @@
+@use '../../../helpers/mixin.scss' as *;
+@use '../../../helpers/variables.scss' as *;
+.favorite:hover{
+  background-color: $main-color !important;
+}
+.card {
+  // width: 20% !important;
+  margin: 10px;
+}
+
+  .card{
+    .card-body{
+
+        i{
+          color: #F4C01E;
+        }
+
+    }
+    .favorite{
+      top: 20px;
+      right:20px ;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      @include radius(16px);
+      @include dimension(36px,36px);
+      box-shadow: 0px 4px 4px 0px #0000001A;
+      z-index: 999;
+    }
+    .card-img{
+      height: 310px;
+      img{
+        height: 100%;
+        object-fit: cover;
+      }
+      .card-icon{
+        bottom: 10px;
+        right:10px;
+        background-color: white;
+        @include radius(16px);
+        @include dimension(36px,36px);
+        box-shadow: 0px 4px 4px 0px #0000001A;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+          @include dimension(20px,20px);
+
+        }
+      }
+    }
+  }
+

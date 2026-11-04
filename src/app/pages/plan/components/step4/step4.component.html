@@ -1,0 +1,41 @@
+<div class="cover">
+  <div class="plan p-5 w-100">
+    <div class="steps w-50 my-3">
+      <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+    </div>
+    <h3 class="pry-color fw-bold">{{'Step 4/7'|translate}}</h3>
+
+    <div class="question mb-4">
+      <h1>{{'What is your Height?'|translate}}</h1>
+    </div>
+    <div class="answer row justify-content-evenly">
+      <div
+        class="text-content d-flex justify-content-around align-items-center"
+      >
+        <input
+          [(ngModel)]="height"
+          id="age"
+          type="text"
+          placeholder="21"
+          appOnlyNumbers
+          class="form-control mx-3"
+        />
+        <label class="col-md-3" for="age">{{'Years'|translate}}</label>
+      </div>
+    </div>
+    <div class="status d-flex justify-content-around w-100">
+      <button
+        (click)="openStep3()"
+        class="btn btn-success w-75 my-5 rounded-3 me-2 fw-bold pry-bg border-0"
+      >
+        {{'Back'|translate}}
+      </button>
+      <button
+        (click)="openStep5()"
+        class="btn btn-success w-75 my-5 rounded-3 fw-bold pry-bg border-0"
+      >
+        {{'Next'|translate}}
+      </button>
+    </div>
+  </div>
+</div>

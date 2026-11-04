@@ -1,0 +1,44 @@
+
+@use "../../../../helpers/mixin.scss" as *;
+@use "../../../../helpers/variables.scss" as *;
+.cover {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999999999999999999999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .fa-xmark{
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .item-container {
+
+    background-color: white;
+    width: 50vw;
+    min-height: 60vh;
+    @include radius(16px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between ;
+
+    .btn{
+      border-color:$main-color ;
+    }
+    .btn:hover{
+      background-color: $main-color;
+    }
+
+  }
+
+
+}

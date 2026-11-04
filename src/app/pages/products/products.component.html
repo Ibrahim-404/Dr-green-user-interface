@@ -1,0 +1,68 @@
+<!-- slider start -->
+@if (images) {
+<ngb-carousel>
+  @for (item of categoryData.productCategories; track $index) {
+
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper d-flex justify-content-center">
+      <img
+        [src]="baseUrl + 'ProductImages/' + item.productImages[0]"
+        alt="Random first slide"
+        appDefaultImage="/assets/default-img.png"
+      />
+    </div>
+    <div class="carousel-caption"></div>
+  </ng-template>
+  }
+</ngb-carousel>
+}
+<!-- slider end -->
+<!-- bestseller start -->
+<!-- <div class="bestseller w-100 py-4 px-4 my-4">
+  <h3 class="mx-2">{{ "Bestseller" | translate }}</h3>
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let slide of categoryData.productCategories">
+      <ng-template carouselSlide [id]="slide.id.toString()">
+        <div>
+          <app-card
+            [routerLink]="'details/' + slide.id"
+            [card]="slide"
+          ></app-card>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div> -->
+<!-- bestseller end -->
+<!-- Packages start -->
+<!-- <div class="Packages w-100 py-4 px-4 my-4">
+  <h3 class="mx-2">{{ "Packages" | translate }}</h3>
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let slide of categoryData.productCategories">
+      <ng-template carouselSlide [id]="slide.id.toString()">
+        <div>
+          <app-card
+            [routerLink]="'details/' + slide.id"
+            [card]="slide"
+          ></app-card>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div> -->
+<!-- bestseller end -->
+<!-- All Products  start -->
+<div class="all-Products w-100 py-4 px-4 my-4 position-relative">
+  <!-- <h3 class="mx-2">{{ "All Products" | translate }}</h3> -->
+  <div class="row justify-content-around">
+    @for (item of categoryData.productCategories; track $index) {
+
+      <div class="col-md-3">
+        <app-card
+        [routerLink]="'details/' + item.id"
+        [card]="item"
+      ></app-card>      </div>
+    }
+  </div>
+</div>
+<!-- bestseller end -->

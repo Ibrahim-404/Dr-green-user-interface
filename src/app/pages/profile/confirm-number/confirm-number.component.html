@@ -1,0 +1,15 @@
+<div class="container p-3 d-flex flex-column align-items-center">
+  <h3 class="m-2 ">{{'Verification code sent check'|translate}} </h3>
+  <p class="pry-color">0155136666</p>
+  <div class="form-group w-75 m-auto d-flex justify-content-center gap-1 my-2">
+    <input maxlength="1"  type="text" class="form-control">
+    <input maxlength="1" type="text" class="form-control">
+    <input maxlength="1" type="text" class="form-control">
+    <input maxlength="1" type="text" class="form-control">
+  </div>
+
+  <div class="btn-container d-flex flex-column align-items-center justify-content-center my-4">
+      <a class="pra-col my-2">{{'Resend code?'|translate}}</a>
+    <button (click)="openCongrates()" class="btn btn-success px-5 py-2">{{'Confirm'|translate}}</button>
+  </div>
+</div>

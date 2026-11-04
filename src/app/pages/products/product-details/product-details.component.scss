@@ -1,0 +1,66 @@
+@use '../../../../helpers/mixin.scss' as *;
+@use '../../../../helpers/variables.scss' as *;
+.container-fluid
+{
+  width: 90%;
+  margin: auto;
+  .main-img{
+    border: solid 1px $sec-color;
+  }
+
+  .top-sec{
+    img{
+      padding: 10px;
+      @include radius(10px);
+
+}
+.selected {
+  border: solid 1px $sec-color;
+}
+  }
+  .overview{
+    box-shadow: 0px 4px 4px 0px #0000001A;
+
+  }
+  .raiting-sec{
+    box-shadow: 0px 4px 4px 0px #0000001A;
+    .all{
+      border-top: solid .5px rgba(128, 128, 128, 0.466);
+      .customer-reviews{
+        .customer-review{
+          h2{
+            background-color: #D9D9D9;
+            @include radius(50%);
+            @include dimension(60px,60px);
+            line-height: 100%;
+            text-align: center;
+            padding-top: 15px;
+          }
+          border-bottom: rgba(128, 128, 128, 0.466) .5px solid;
+
+        }
+
+        .add-comment{
+          background-color:#F2F2F2;
+          i{
+            box-shadow: 0px 4px 4px 0px #0000001F;
+            cursor: pointer;
+            width: 60px;
+            height: 55px;
+            padding-top: 15px !important;
+            padding-right: 15px !important;
+            transform: rotate(50deg);
+          }
+        }
+      }
+
+    }
+    .reviews-container{
+      border-right: rgba(128, 128, 128, 0.466) .5px solid;
+
+    }
+  }
+}
+.bad-review{
+  color: #F36C31 !important;
+}

@@ -1,0 +1,73 @@
+@use '../../../../helpers/variables.scss' as *;
+@use '../../../../helpers/mixin.scss' as *;
+.back{
+  background-color: #f3f3f3;
+  position: absolute;
+  top: 0%;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: -999;
+
+}
+.profile-container{
+  width: 90%;
+  margin: auto;
+  .headers{
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 6px 10px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    margin: 20px 0px;
+
+    }
+    .empty{
+      img{
+        max-width: 100%;
+      }
+      button{
+        border-color:$main-color !important ;
+      }
+    }
+
+}
+.profile-img{
+  background-image: url(/assets/profile.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  width: 90%;
+  margin: 0px auto;
+  height: fit-content;
+  .content{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    padding-bottom: 5px;
+    color: aliceblue;
+    background-image:  linear-gradient(90deg, #11A005 42.28%, rgba(73, 166, 16, 0) 100%);
+
+    .desc{
+      width: 50%;
+
+
+    }
+    .details-btn{
+    display: flex;
+    justify-content: end;
+    }
+
+  }
+
+}
+.btn-outline-success{
+  border-color: $main-color !important;
+}
+.btn-outline-success:hover{
+  background-color: $main-color !important;
+}
+@media screen and (max-width:600px) {
+  .desc{
+    width: 100%;
+  }
+}
