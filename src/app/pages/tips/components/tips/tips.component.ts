@@ -22,14 +22,14 @@ export class TipsComponent {
         next:(res)=>{
           if(res.data){
             console.log(res.data)
-           this.trendingTips=res.data.filter((x:any)=>{
+            const filtered = res.data.filter((x:any)=>{
               return x.status==20
-            })
+            });
+            this.trendingTips = filtered.length > 0 ? filtered : res.data;
             this._SharedService.loadingStatus('stop')
           }
         },
         error:(err)=>{
-
           this._SharedService.loadingStatus('stop')
         }
       })

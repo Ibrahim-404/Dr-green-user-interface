@@ -1,17 +1,17 @@
 <div class="container p-3">
   <img class="w-100 mb-2" src="/assets/addfood.png" alt="" />
   <div class="w-100 d-flex justify-content-between">
-    <h4>{{ recommendedMeals[0].mealTypeName }}</h4>
+    <h4>{{ recommendedMeals[0]?.mealTypeName }}</h4>
 
     <h6 class="fw-bold"><span class="sec-color">{{calSubmission}} </span>{{'Cal'|translate}}</h6>
   </div>
   <div class="w-100 d-flex justify-content-between align-items-center my-3">
     <h6 class="pra-col">
-      {{'Advised to'|translate}} {{ recommendedMeals[0].recommendedCalories }} {{'Cal'|translate}}
+      {{'Advised to'|translate}} {{ recommendedMeals[0]?.recommendedCalories }} {{'Cal'|translate}}
     </h6>
-    <button *ngIf="recommendedMeals[0].recommendedCalories>calSubmission" class="btn btn-outline-success rounded-4">{{'Light amount'|translate}}</button>
+    <button *ngIf="recommendedMeals[0]?.recommendedCalories>calSubmission" class="btn btn-outline-success rounded-4">{{'Light amount'|translate}}</button>
   </div>
-  @for (item of recommendedMeals[0].planMealFoods; track $index) {
+  @for (item of recommendedMeals[0]?.planMealFoods; track $index) {
   <div class="w-100 food-container my-3">
     <div class="food d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center">

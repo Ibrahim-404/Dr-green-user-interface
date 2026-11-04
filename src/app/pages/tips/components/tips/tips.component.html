@@ -4,27 +4,29 @@
 
   <div class="row my-3">
     <!-- displaying first four items starts-->
-    <div class="col-md-6 px-4" [routerLink]="'details/' + trendingTips[0].id">
+    @if (trendingTips && trendingTips.length > 0 && trendingTips[0]?.id) {
+    <div class="col-md-6 px-4" [routerLink]="'details/' + trendingTips[0]?.id">
       <div class="card w-100 d-flex justify-content-start">
         <img
           class="card-img-top img-left w-100 pointer"
-          [src]="basePath + 'TipsDrGreenMedia/' + trendingTips[0].url"
+          [src]="basePath + 'TipsDrGreenMedia/' + trendingTips[0]?.url"
           alt="Card image cap"
           appDefaultImage="/assets/default-img.png"
         />
 
         <div class="card-body pointer">
           <p class="biege-bg headline rounded">
-            {{ trendingTips[0].tipsDepartment }}
+            {{ trendingTips[0]?.tipsDepartment }}
           </p>
-          <h5 class="card-title">{{ trendingTips[0].title }}</h5>
+          <h5 class="card-title">{{ trendingTips[0]?.title }}</h5>
           <p class="card-text">
-            {{ trendingTips[0].content | slice : 0 : 150 }}
+            {{ trendingTips[0]?.content | slice : 0 : 150 }}
           </p>
         </div>
-        <h6 class="by">{{ trendingTips[0].author }}</h6>
+        <h6 class="by">{{ trendingTips[0]?.author }}</h6>
       </div>
     </div>
+    }
     <!-- displaying first four items ends -->
 
     <!-- Tips bar start -->
@@ -33,18 +35,18 @@
 
       <div
         class="card row w-100 flex-row my-2 pointer"
-        [routerLink]="'details/' + item.id"
+        [routerLink]="'details/' + item?.id"
       >
         <img
           class="card-img-top img-right vol-md-4"
-          [src]="basePath + 'TipsDrGreenMedia/' + item.url"
+          [src]="basePath + 'TipsDrGreenMedia/' + item?.url"
           alt="Card image cap"
           appDefaultImage="/assets/default-img.png"
         />
         <div class="card-body col-md-8">
-          <p class="biege-bg headline rounded">{{ item.tipsDepartment }}</p>
-          <h5 class="card-title">{{ item.title }}</h5>
-          <h6 class="by">{{ item.author }}</h6>
+          <p class="biege-bg headline rounded">{{ item?.tipsDepartment }}</p>
+          <h5 class="card-title">{{ item?.title }}</h5>
+          <h6 class="by">{{ item?.author }}</h6>
         </div>
       </div>
 
