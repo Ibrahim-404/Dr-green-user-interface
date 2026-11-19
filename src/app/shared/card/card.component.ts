@@ -5,7 +5,7 @@ import {
   PagesService,
   toggleProductFav,
 } from './../../pages/services/pages.service';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { Component, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ProductCategory } from '../../pages/interfaces/category-products';
 import { ToasterService } from '../services/toaster.service';

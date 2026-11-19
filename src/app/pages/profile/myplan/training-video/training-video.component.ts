@@ -7,7 +7,7 @@ import {
   RecommendedPlanTrainingVideo,
   RecommendedPlanTrainingVideoModel,
 } from '../../../interfaces/recommended-meals';
-import { environment } from '../../../../../environments/environment.development';
+import { environment } from '../../../../../environments/environment';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

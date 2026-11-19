@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../../../features/services/auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Plan } from '../interfaces/plan';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '../../../../environments/environment';
 import { LocalStorageService } from './../../../services/local-storage.service';
 
 @Injectable({

@@ -3,6 +3,7 @@ import { PagesService } from './../services/pages.service';
 import { Component } from '@angular/core';
 import { NgbCarouselConfig, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { LookUpByStatus } from '../interfaces/look-up-by-status';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-about',
@@ -17,7 +18,7 @@ export class AboutComponent {
   vision:LookUpByStatus|null=null;
   mission:LookUpByStatus|null=null;
   ourValue:any[]=[];
-  basePath:string='https://Drgreen.wabcgroup.com/LookUpsImages/'
+  basePath: string = `${environment.baseURL}LookUpsImages/`;
 
   constructor(config: NgbCarouselConfig,private _PagesService:PagesService,public _SharedService:SharedService){
 

@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PagesService } from './../services/pages.service';
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import {
   RootCategory,
   RootCategoryModel,

@@ -7,7 +7,7 @@ import { register } from 'swiper/element/bundle';
 import { AddToCardComponent } from '../add-to-card/add-to-card.component';
 import { ActivatedRoute } from '@angular/router';
 import { ProductById, ProductByIdModel } from '../../interfaces/product-by-id';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '../../../../environments/environment';
 import { switchMap } from 'rxjs';
 
 @Component({

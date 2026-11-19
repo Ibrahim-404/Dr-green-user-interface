@@ -4,7 +4,7 @@ import { PagesService } from './../services/pages.service';
 import { Component ,inject} from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddAddressComponent } from './add-address/add-address.component';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { CartItem, CartItemModel } from '../interfaces/cart-item';
 import { AddressDetailsComponent } from './address-details/address-details.component';
 

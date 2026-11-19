@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { Category } from '../../pages/interfaces/category';
 import { LocalStorageService } from './../../services/local-storage.service';
 @Injectable({

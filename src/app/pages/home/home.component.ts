@@ -9,7 +9,7 @@ import { PlanComponent } from '../plan/components/plan/plan.component';
 import { LookUpByStatus } from '../interfaces/look-up-by-status';
 import { Reviews } from '../interfaces/reviews';
 import { Ads } from '../interfaces/ads';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { Products, ProductsModel } from '../interfaces/products';
 

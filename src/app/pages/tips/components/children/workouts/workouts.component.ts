@@ -1,4 +1,4 @@
-import { environment } from '../../../../../../environments/environment.development';
+import { environment } from '../../../../../../environments/environment';
 import { SharedService } from '../../../../../shared/services/shared.service';
 import { AllTips, Tips } from '../../../interfaces/all-tips';
 import { TipsService } from './../../../services/tips.service';

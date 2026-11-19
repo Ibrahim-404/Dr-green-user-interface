@@ -1,5 +1,5 @@
 import { SharedService } from './../../../../shared/services/shared.service';
-import { environment } from '../../../../../environments/environment.development';
+import { environment } from '../../../../../environments/environment';
 import { AllTips, Tips } from '../../interfaces/all-tips';
 import { TipsService } from './../../services/tips.service';
 import { Component } from '@angular/core';

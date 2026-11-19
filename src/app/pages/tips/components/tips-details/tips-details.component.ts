@@ -3,7 +3,7 @@ import { PagesService } from './../../../services/pages.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { Tip, TipModel } from '../../interfaces/tip';
-import { environment } from '../../../../../environments/environment.development';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-tips-details',

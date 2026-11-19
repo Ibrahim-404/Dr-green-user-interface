@@ -3,7 +3,7 @@ import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { jwtDecode } from 'jwt-decode';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { user, userModel } from '../../pages/profile/profile/profile.component';
 
 @Injectable({

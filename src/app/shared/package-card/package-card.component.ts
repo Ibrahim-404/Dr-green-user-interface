@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { Package, PackageModel } from '../../pages/products/all-products/all-products.component';
 import { PagesService, toggleProductFav } from '../../pages/services/pages.service';
 import { LocalStorageService } from '../../services/local-storage.service';
